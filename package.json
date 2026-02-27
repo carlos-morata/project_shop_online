@@ -1,0 +1,28 @@
+{
+  "name": "project-shop-online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos-morata/project-shop-online.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlos-morata/project-shop-online/issues"
+  },
+  "homepage": "https://github.com/carlos-morata/project-shop-online#readme",
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "devDependencies": {
+    "baseline-browser-mapping": "^2.10.0"
+  }
+}

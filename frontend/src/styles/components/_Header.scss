@@ -1,0 +1,41 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+// %logo {
+//     display: flex;
+//     align-items: center;
+//     text-decoration: none;
+// }
+
+// %title-logo {
+//     font-size: variables.$text;
+//     text-transform: uppercase;
+//     color: variables.$text-main;
+// }
+
+.header-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 999;
+    background-color: variables.$background-white;
+    box-sizing: border-box;
+
+    .logo {
+        @include mixins.logo-style;
+    }
+    
+    .right-header {
+        display: flex;
+        justify-content: end;
+        column-gap: 8px;
+        width: 58%;
+    }
+
+    .links {
+        color: variables.$text-main;
+    }
+}

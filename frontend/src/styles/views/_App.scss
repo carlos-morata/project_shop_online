@@ -1,0 +1,21 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+html {
+    scrollbar-width: none;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 100dvh;
+    box-sizing: variables.$border-box;
+    position: relative;
+
+    .main-container {
+        width: 100vw;
+        box-sizing: variables.$border-box;
+        margin-top: 51px;
+    }
+}

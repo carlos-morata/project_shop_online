@@ -1,0 +1,27 @@
+@use "../utils/variables.scss" as variables;
+
+@mixin box-shadow ($border-color) {
+    -webkit-box-shadow: 0px 0px 4px 2px $border-color;
+    box-shadow: 0px 0px 4px 2px $border-color;
+}
+
+@mixin box ($color) {
+    -webkit-box-shadow: 0px 0px 4px 1px variables.$color;
+    box-shadow: 0px 0px 4px 1px variables.$color;
+}
+
+@mixin logo-style {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  img {
+    width: 50px;
+  }
+
+  h1 {
+    font-size: variables.$text;
+    text-transform: uppercase;
+    color: variables.$text-main;
+  }
+}

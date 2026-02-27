@@ -1,0 +1,160 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.home-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: variables.$border-box;
+    background-color: #fcf8f9;
+}
+
+.newCollection-home {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    box-sizing: variables.$border-box;
+    background-image: url(../../assets/images/Foto\ New\ Collection.png);
+
+    .content-home {
+        position: absolute;
+        bottom: 55px;
+        left: 20px;
+    }
+
+    .text-new {
+        width: 130px;
+        padding: 3px;
+        text-transform: variables.$uppercase;
+        font-size: variables.$text2;
+        color: variables.$background-white;
+        background-color: variables.$primary;
+        font-weight: variables.$font-bold;
+        margin-bottom: 10px;
+    }
+
+    .title-home {
+        width: 60%;
+        color: variables.$background-white;
+        text-transform: variables.$uppercase;
+        font-weight: variables.$font-bold;
+        margin-bottom: 10px;
+    }
+
+    .title-home + p {
+        width: 80%;
+        color: #ffffffb1;
+        margin-bottom: 10px;
+    }
+
+    .collection-btn {
+        width: 225px;
+        height: 40px;
+        background-color: variables.$background-white;
+        color: variables.$text-main;
+        border: none;
+        font-size: 0.65em;
+        text-transform: variables.$uppercase;
+        font-weight: variables.$font-bold;
+        cursor: variables.$pointer;
+        letter-spacing: variables.$letter-spacing;
+    }
+
+    .collection-btn:hover {
+        background-color: variables.$primary;
+        color: variables.$background-white;
+    }
+
+}
+
+.article-story {
+    background-color: #f3e7e9;
+    padding: 1.2em;
+    margin-bottom: 4.5em;
+
+    span {
+        text-transform: variables.$uppercase;
+        color: variables.$primary;
+        font-size: variables.$text2;
+
+    }
+
+    .title-story {
+        width: 70%;
+        text-transform: variables.$uppercase;
+        font-size: variables.$title3;
+        margin: 10px 0px 12px 0px;
+    }
+
+    .title-story + p {
+        color: variables.$text-muted;
+        line-height: 22px;
+    }
+
+    .story-link {
+        display: inline-block;
+        text-decoration: none;
+        text-transform: variables.$uppercase;
+        font-size: variables.$text2;
+        color: variables.$text-main;
+        margin: 20px 0px 35px 0px;
+    }
+
+    .story-link:hover {
+        text-decoration: underline;
+    }
+}
+
+.shop-sections {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    box-sizing: variables.$border-box;
+    row-gap: 1em;
+
+    .genre-section {
+        position: relative;
+        width: 85%;
+        height: 400px;
+        cursor: variables.$pointer;
+    }
+
+    .genre-women {
+        background-image: url(../../assets/images/SeccionMujer.png);
+    }
+
+    .genre-men {
+        background-image: url(../../assets/images/SeccionHombre.png);
+    }
+
+    .genre-accesories {
+        background-image: url(../../assets/images/SeccionAccesorios.png);
+    }
+
+    .genre-sales {
+        background-image: url(../../assets/images/SeccionRebajas.png);
+    }
+
+    .content-genre {
+        position: absolute;
+        bottom: 45px;
+        left: 20px;
+    }
+
+    .title-section {
+        text-transform: variables.$uppercase;
+        color: variables.$background-white;
+        font-size: variables.$title2;
+    }
+
+    .title-section + p {
+        text-decoration: underline;
+        text-transform: variables.$uppercase;
+        font-size: 0.6em;
+        color: variables.$background-light;
+        font-weight: variables.$font-bold;
+    }
+}

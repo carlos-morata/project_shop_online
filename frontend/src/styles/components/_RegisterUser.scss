@@ -1,0 +1,71 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.register-container {
+    margin-top: 25px;
+    width: 100vw;
+    box-sizing: variables.$border-box;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 10px;
+        color: variables.$text-muted;
+        letter-spacing: variables.$letter-spacing;
+        font-size: variables.$title1;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: variables.$border-box;
+    }
+
+    form label {
+        margin-bottom: 2px;
+    }
+
+    form label:not(form label:first-child) {
+        margin-top: 10px;
+    }
+
+    form input {
+        width: 80%;
+        padding: 4px;
+        background-color: variables.$background-light;
+        border: 1px solid variables.$text-muted;
+        color: #fff;
+    }
+
+    form input::placeholder {
+        color: variables.$text-main;
+    }
+
+    form input:focus {
+        color: #fff;
+        outline: none;
+    }
+
+    form button {
+        width: 75%;
+        margin-top: 15px;
+        background-color: variables.$primary;
+        color: variables.$text-main;
+        border: none;
+        padding: 6px;
+    }
+
+    .login-text {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    p  + a {
+        display: block;
+        text-align: center;
+        text-decoration: underline;
+        color: variables.$background-dark;
+        margin-top: 2px;
+    }
+}

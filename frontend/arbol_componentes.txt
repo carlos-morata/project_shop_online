@@ -1,0 +1,77 @@
+App.jsx 
+    Header.jsx --> <header>
+        <Navbar> ---> Barra de navegación / Menú hamburguesa
+            NavList.jsx --> <NavList> --> Lista Generos
+                NavItem.jsx --> <NavItem> --> Items de Listas de Géneros (Mujer, Hogar, Ofertas)
+                    SubNavList.jsx --> <SubNavList> --> SubLista de Géneros
+                        SubNavItem.jsx --> <SubNavItem> --> Items de Sublista de Géneros (Camisetas, Abrigos, etc.)
+                            </SubNavItem>
+                    </SubNavList>
+                </NavItem> 
+            </NavList>
+        </Navbar>
+
+        <SearchProducts /> ---> Formulario de Buscar Producto
+        <Icons /> ---> Icono Logotipo e Icono Usuario
+        <CartWidget /> ---> Carrito de la compra
+    </header>
+    RegisterForm.jsx ---> <RegisterForm /> --> Registro de Usuario
+    
+    Main.jsx --> <main>
+        <HomePage> ---> Página Principal --> Ruta /home
+            <Img /> ---> Imagen
+            <Categories /> ---> Abrigos, Pantalones...
+            <AboutSection /> ---> Quiénes Somos
+        </HomePage>
+
+        <CategoryLanding> ---> Página Sección "Mujer" --> Ruta /:genero
+            <Img /> ---> Imagen
+            <Categories /> ---> Categorías Abrigos, etc...
+            <ProductsList />
+        </CategoryLanding>
+
+        <CategoryProduct> ---> Página Categoría "Abrigos" --> Ruta /:genero/:categoria (/mujer/abrigos)
+           <Filters /> ---> Filtros y Ordenación
+           <ProductsList> ---> Lista de Productos
+                <ProductCard /> ---> Cada Producto
+            </ProductsList>
+        </CategoryProduct>
+
+        <ProductDetail> ---> Página Producto --> Ruta /:genero/:categoria/:producto_id (mujer/abrigos/modeloAbrigo)
+            <ProductImg /> --> Imagen Del Producto
+            <ProductInfo /> --> Título, Precio, Descripción
+            <FormAddCart /> --> Tallas + Añadir al Carrito
+        </ProductDetail>
+
+        <LegalPage /> --> Página a Políticas Legales --> /legalidad
+        <AuthorPage /> --> Página a Derechos de Autor --> /creditos
+    </main>
+
+    Footer.jsx ---> <footer>
+    ContactForm.jsx ---> <ContactForm /> --> Contacto
+        <FooterLinks> --> Enlaces a redes, legalidad, derechos
+            <SocialLinks /> --> Redes Sociales
+            <LegalPage /> --> Políticas Legales
+            <AuthorPage /> --> Derechos de Autor
+        </FooterLinks>
+    </footer>
+
+-- CREACIÓN COMPONENTES --
+- src/
+    -- components/
+        -- common/
+            npx crcf src/components/common/
+        -- forms/
+            npx crcf src/components/forms/RegisterUser ContactForm -j --notest -f
+        -- layout/
+            -- Header/
+                npx crcf src/components/layout/Header/Nav ShoppingCart -j --notest -f
+                -- navigation/
+                    npx crcf src/components/layout/Header/navigation/ NavList NavItem SubNavList SubNavItem -j --notest -f
+            -- Footer/
+                npx crcf src/components/layout/Footer/FooterLinks SocialLinks -j --notest -f
+    -- pages/
+        npx crcf src/pages/HomePage CategoryLanding CategoryProduct ProductDetail LegalPage AuthorPage NotFoundPage -j --notest -f
+        npx crcf src/pages/UserPage -j --notest -f
+
+-- styles/

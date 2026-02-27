@@ -1,0 +1,22 @@
+@use './views/index.scss';
+@use './views/App.scss';
+
+// Importaciones Componentes
+@use './components/Header';
+@use './components/Nav';
+
+@use './components/Footer';
+@use './components/SocialLinks.scss';
+@use './components/SearchProducts.scss';
+
+@use './components/RegisterUser';
+@use './components/LoginUser.scss';
+
+// Importaciones de Páginas
+@use './pages/HomePage';
+
+@use './pages/CategoryLanding';
+@use './pages/CategoryProduct';
+@use './pages/ProductDetail';
+
+@use './pages/SearchPages';

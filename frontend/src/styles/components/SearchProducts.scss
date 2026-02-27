@@ -1,0 +1,31 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.search-form {
+    box-sizing: variables.$border-box;
+    // margin: 0 auto;
+
+    input {
+        background-color: variables.$primary;
+        color: #fff;
+        border: 1px solid variables.$primary;
+        padding: 5px;
+        border-radius: 10px;
+        display: none;
+    }
+
+    input[type="text"]::placeholder {
+        color: variables.$text-main;
+    }
+
+    input[type="text"]:focus {
+        outline: none;
+    }
+
+    .search-btn {
+        background-color: transparent;
+        color: #fff;
+        border: none;
+        margin-left: 10px;
+    }
+}

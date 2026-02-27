@@ -1,0 +1,14 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    display: none;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+}

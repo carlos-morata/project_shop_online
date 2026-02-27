@@ -1,0 +1,29 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.footer-container {
+    width: 100vw;
+    padding: 10px;
+    box-sizing: variables.$border-box;
+    background-color: variables.$background-white;
+    margin-top: 2.5rem;
+
+    .logo {
+        @include mixins.logo-style;
+    }
+
+    .logo + p {
+        width: 90%;
+        margin: 5px 0px 15px 12px;
+        line-height: 20px;
+        color: variables.$text-muted;
+        font-size: 1em;
+    }
+
+    .copy-footer {
+        display: inline-block;
+        text-align: center;
+        font-size: variables.$text2;
+        color: variables.$text-muted;
+    }
+}

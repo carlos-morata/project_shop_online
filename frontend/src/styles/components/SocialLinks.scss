@@ -1,0 +1,20 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.socialLinks-list {
+    display: flex;
+    column-gap: 10px;
+    margin: 0px 0px 15px 8px;
+
+    
+    li {
+        list-style: none;
+        padding: 5px;
+        border-radius: 50px;
+        background-color: variables.$background-light;
+    }
+
+    li a {
+        color: variables.$background-dark;
+    }
+}

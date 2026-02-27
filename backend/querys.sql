@@ -1,0 +1,46 @@
+-- CREACIÓN DE TABLAS -> USUARIOS PEDIDOS PRODUCTOS 
+-- TABLA USUARIOS
+-- CREATE TABLE users (
+--  	user_id SERIAL PRIMARY KEY,
+--  	username VARCHAR(20) NOT NULL,
+--  	email VARCHAR(255) UNIQUE NOT NULL,
+--  	password VARCHAR(100) NOT NULL,
+--  	rol VARCHAR(50) NOT NULL DEFAULT 'user' CHECK (rol IN ('user', 'admin'))
+--  );
+
+-- TABLA PEDIDOS
+-- CREATE TABLE orders (
+-- 	order_id SERIAL PRIMARY KEY,
+-- 	user_id INT,
+-- 	total_price INT NOT NULL DEFAULT 0,
+-- 	state VARCHAR(20) NOT NULL DEFAULT 'pending' 
+-- 			CHECK (state IN ('pending', 'in process', 'sent', 'delivered', 'canceled')),
+-- 	FOREIGN KEY(user_id) REFERENCES users(user_id)
+-- );
+
+-- CREATE TYPE gender_type AS ENUM ('hombre', 'mujer');
+-- TABLA PRODUCTOS
+-- CREATE TABLE products (
+--     product_id SERIAL PRIMARY KEY,
+--     url_image VARCHAR(300),
+--     name VARCHAR(100) NOT NULL,
+--     price DECIMAL(10, 2) NOT NULL,
+--     description VARCHAR(250),
+--     sizes VARCHAR(30),
+--     category VARCHAR(50),
+--     gender gender_type NOT NULL,
+--     stock INT NOT NULL DEFAULT 0
+-- );
+
+-- TABLA
+-- CREATE TABLE orders_items (
+-- 	order_items SERIAL PRIMARY KEY,
+-- 	order_id INT,
+-- 	product_id INT,
+-- 	quantity INT NOT NULL CHECK (quantity > 0),
+-- 	total_price DECIMAL(10, 2) NOT NULL,
+-- 	subtotal DECIMAL(10, 2) 
+-- 		GENERATED ALWAYS AS (quantity * total_price) STORED,
+-- 	FOREIGN KEY(order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
+-- 	FOREIGN KEY(product_id) REFERENCES products(product_id)
+-- )
