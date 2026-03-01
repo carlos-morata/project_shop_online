@@ -16,8 +16,13 @@ const queries = {
     
     // Leer Categoría por Género 
     getCategoriesByGender: 
-        ` SELECT DISTINCT category FROM products
-            WHERE gender = $1`,
+        // ` SELECT DISTINCT category FROM products
+        //     WHERE gender = $1`,
+        ` SELECT category,
+            COUNT(*)::int AS total_products
+            FROM products WHERE gender = $1
+            GROUP BY category
+            ORDER BY category;`,
     
     // Leer Productos Por Categoría y Género
     getProductsByGenderAndCategory: 
@@ -29,9 +34,10 @@ const queries = {
         ` SELECT * FROM products
             WHERE gender = $1 AND LOWER(category) = $2 AND product_id = $3;` ,
     
+    // Buscar Productos
     getProducts:
         ` SELECT * FROM products
-            WHERE name ILIKE '%' || $1 || '%';`
+            WHERE name ILIKE '%' || $1 || '%';`,
 }
 
 module.exports = queries;

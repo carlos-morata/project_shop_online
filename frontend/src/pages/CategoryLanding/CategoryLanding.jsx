@@ -44,7 +44,7 @@ const CategoryLanding = () => {
       <h3>Categorías</h3>
       { categories.map((item, index) => (
         <Link key={index} to={`/${gender}/${item.category.toLowerCase()}`} className="category-link">
-          {item.category}
+          {item.category} <span>{item.total_products}</span>
         </Link>
       ))}
     </section>

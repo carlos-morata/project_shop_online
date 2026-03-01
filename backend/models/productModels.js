@@ -34,7 +34,7 @@ const getByGenderModel = async (gender) => {
 const getCategoriesByGenderModel = async (gender) => {
     try {
         const resultCategoryGender = await pool.query(queries.getCategoriesByGender, [gender]);
-        return resultCategoryGender.rows
+        return resultCategoryGender.rows;
     } catch (error) {
         console.error('Error al mostrar Categorías por Género: ', error.message);
         throw new Error('Error al mostrar Categorías por Género');
@@ -78,5 +78,5 @@ module.exports = {
     getCategoriesByGenderModel,
     getProductsByGenAndCatModel,
     getProductByIdModel,
-    getProductsModel
+    getProductsModel,
 }

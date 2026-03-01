@@ -43,6 +43,7 @@ const getByGender = async (req, res) => {
 
 const getCategoriesByGender = async (req, res) => {
     try {
+        console.log("Gender recibido:", req.params.gender);
         const { gender } = req.params;
        const categories = await productModels.getCategoriesByGenderModel(gender);
 
@@ -112,5 +113,5 @@ module.exports = {
     getCategoriesByGender,
     getProductsByGenAndCat,
     getProductById,
-    getProducts
+    getProducts,
 }
