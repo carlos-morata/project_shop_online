@@ -47,24 +47,28 @@
 
 
     .btn-categories {
-        width: 95%;
-        padding: 10px;
+        width: 90%;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 10px;
+        gap: 0.90rem;
+        padding: 10px;
+        margin-top: 1.5rem;
+        box-sizing: variables.$border-box;
     }
 
-    .btn-categories h2 {
-        text-align: center;
-        font-size: variables.$title3;
-        color: #d4c382;
+    .btn-categories h3 {
+        font-size: variables.$text2;
+        text-transform: uppercase;
+        color: variables.$text-muted;
+        font-weight: variables.$font-bold;
+        font-family: variables.$font-family;
+        letter-spacing: 0.4px;
     }
 
-    .btn-categories a {
+    .category-link {
         text-decoration: none;
-        width: 45%;
+        color: variables.$text-main;
     }
 
     button {
