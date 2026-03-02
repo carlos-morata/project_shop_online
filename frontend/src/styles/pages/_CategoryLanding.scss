@@ -6,9 +6,12 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
     box-sizing: variables.$border-box;
+    font-family: variables.$font-family;
 
     .section-gender-top {
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -67,8 +70,20 @@
     }
 
     .category-link {
+        display: flex;
+        justify-content: space-between;
         text-decoration: none;
         color: variables.$text-main;
+        font-size: variables.$text2;
+        padding: 10px;
+        // background-color: #f6dfe2;
+        // color: variables.$primary;
+        // font-weight: variables.$font-bold;
+        // border-radius: variables.$border-radius2;
+
+        span {
+            color: variables.$text-muted;
+        }
     }
 
     button {
