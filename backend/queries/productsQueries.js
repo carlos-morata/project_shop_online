@@ -12,7 +12,7 @@ const queries = {
     // Leer Productos
     getProductsByGender:
         ` SELECT * FROM products 
-        WHERE LOWER(gender) = LOWER($1);`,
+        WHERE gender = $1;`,
     
     // Leer Categoría por Género 
     getCategoriesByGender: 
