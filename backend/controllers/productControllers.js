@@ -43,58 +43,59 @@ const getProducts = async (req, res) => {
     }
 }
 
-const getByGender = async (req, res) => {
-    try {
-        const { gender } = req.params;
-        const products = await productModels.getByGenderModel(gender);
+// const getByGender = async (req, res) => {
+//     try {
+//         const { gender } = req.params;
+//         const products = await productModels.getByGenderModel(gender);
 
-        if(!products || products.length === 0) {
-            return res.status(404).json({ message: `No hay productos para ${gender}`});
-        }
-        res.status(200).json(products);
-    } catch(error) {
-        console.error(error);
-        res.status(500).json({ error: "Error interno del servidor" });
-    }
-}
+//         if(!products || products.length === 0) {
+//             return res.status(404).json({ message: `No hay productos para ${gender}`});
+//         }
+//         res.status(200).json(products);
+//     } catch(error) {
+//         console.error(error);
+//         res.status(500).json({ error: "Error interno del servidor" });
+//     }
+// }
 
-const getCategoriesByGender = async (req, res) => {
-    try {
-        console.log("Gender recibido:", req.params.gender);
-        const { gender } = req.params;
-       const categories = await productModels.getCategoriesByGenderModel(gender);
+// const getCategoriesByGender = async (req, res) => {
+//     try {
+//         console.log("Gender recibido:", req.params.gender);
+//         const { gender } = req.params;
+//        const categories = await productModels.getCategoriesByGenderModel(gender);
 
-       if(categories.length === 0) {
-            return res.status(404).json({ message: `No se encuentran categorías`});
-       }
+//        if(categories.length === 0) {
+//             return res.status(404).json({ message: `No se encuentran categorías`});
+//        }
 
-       res.status(200).json(categories);
-    } catch(error) {
-        console.error(error);
-        res.status(500).json({ error: "Error interno del servidor" });
-    }
-}
+//        res.status(200).json(categories);
+//     } catch(error) {
+//         console.error(error);
+//         res.status(500).json({ error: "Error interno del servidor" });
+//     }
+// }
 
-const getProductsByGenAndCat = async (req, res) => {
-    try {
-        const { gender, category } = req.params;        
-        const products = await productModels.getProductsByGenAndCatModel(gender, category);
+// const getProductsByGenAndCat = async (req, res) => {
+//     try {
+//         const { gender, category } = req.params;        
+//         const products = await productModels.getProductsByGenAndCatModel(gender, category);
 
-        if(!products || !products.length === 0) {
-            return res.status(400).json({ message: "No se encuentran productos"});
-        }
+//         if(!products || !products.length === 0) {
+//             return res.status(400).json({ message: "No se encuentran productos"});
+//         }
 
-        res.status(200).json(products);
-    } catch(error) {
-        console.error(error);
-        res.status(500).json({ error: "Error interno del servidor" });
-    }
-}
+//         res.status(200).json(products);
+//     } catch(error) {
+//         console.error(error);
+//         res.status(500).json({ error: "Error interno del servidor" });
+//     }
+// }
 
 const getProductById = async (req, res) => {
     try {
         const { gender, category, product_id } = req.params;
         const product = await productModels.getProductByIdModel(gender, category, product_id);
+        console.log(product)
 
         if(!product) {
             return res.status(400).json({ message: "No se encuentra el producto"});
@@ -127,9 +128,9 @@ module.exports = {
     createProduct,
     deleteProduct,
     getProducts,
-    getByGender,
-    getCategoriesByGender,
-    getProductsByGenAndCat,
+    // getByGender,
+    // getCategoriesByGender,
+    // getProductsByGenAndCat,
     getProductById,
     searchProducts,
 }

@@ -15,17 +15,17 @@ router.get('/', productControllers.getProducts);
 router.get('/buscar', productControllers.searchProducts);
 
 // http://localhost:3000/genero/mujer
-router.get('/genero/:gender', productControllers.getByGender);
+// router.get('/genero/:gender', productControllers.getByGender);
 
 // http://localhost:3000/categorias/mujer
 // http://localhost:3000/categorias/hombre
-router.get('/categorias/:gender', productControllers.getCategoriesByGender);
+// router.get('/categorias/:gender', productControllers.getCategoriesByGender);
 
 // http://localhost:3000/mujer/abrigos
-router.get('/genero/:gender/categoria/:category', productControllers.getProductsByGenAndCat);
+// router.get('/genero/:gender/categoria/:category', productControllers.getProductsByGenAndCat);
 
 // http://localhost:3000/mujer/abrigos/2
-router.get('/genero/:gender/categoria/:category/:product_id', productControllers.getProductById);
+router.get('/:gender/:category/:product_id', productControllers.getProductById);
 
 
 module.exports = router;
