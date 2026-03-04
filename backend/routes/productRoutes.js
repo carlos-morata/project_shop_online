@@ -9,7 +9,10 @@ router.post('/api/product', productControllers.createProduct);
 router.delete('/api/product/:product_id', productControllers.deleteProduct);
 
 // http://localhost:3000/api/products
-router.get('/api/products', productControllers.getProducts);
+router.get('/', productControllers.getProducts);
+
+// http://localhost:3000/productos/buscar?query=camiseta
+router.get('/buscar', productControllers.searchProducts);
 
 // http://localhost:3000/genero/mujer
 router.get('/genero/:gender', productControllers.getByGender);
@@ -19,12 +22,10 @@ router.get('/genero/:gender', productControllers.getByGender);
 router.get('/categorias/:gender', productControllers.getCategoriesByGender);
 
 // http://localhost:3000/mujer/abrigos
-router.get('/:gender/:category', productControllers.getProductsByGenAndCat);
+router.get('/genero/:gender/categoria/:category', productControllers.getProductsByGenAndCat);
 
 // http://localhost:3000/mujer/abrigos/2
-router.get('/:gender/:category/:product_id', productControllers.getProductById);
+router.get('/genero/:gender/categoria/:category/:product_id', productControllers.getProductById);
 
-// http://localhost:3000/productos/buscar?query=camiseta
-router.get('/buscar', productControllers.searchProducts);
 
 module.exports = router;

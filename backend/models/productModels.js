@@ -87,10 +87,10 @@ const searchProductsModel = async (query) => {
 module.exports = {
     createProductModel,
     deleteProductModel,
+    getProductsModel,
     getByGenderModel,
     getCategoriesByGenderModel,
     getProductsByGenAndCatModel,
     getProductByIdModel,
     searchProductsModel,
-    getProductsModel
 }
