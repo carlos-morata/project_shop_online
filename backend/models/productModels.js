@@ -21,6 +21,19 @@ const deleteProductModel = async (product_id) => {
         return resultDeleteProduct
 }
 
+const getProductsModel = async(gender, category, limit = 16, page = 1) => {
+    try {
+        const offset = (page -1) * limit;
+        const values = [gender || null, category || null, limit, offset];
+
+        const resultProducts = await pool.query(queries.getProducts, values);
+        return resultProducts.rows;
+    } catch(error) {
+        console.log('Error al mostrar Productos: ', error.message);
+        throw new Error("Error al mostrar Productos");
+    }
+}
+
 const getByGenderModel = async (gender) => {
     try {
         const resultProductGender = await pool.query(queries.getProductsByGender, [gender]);
