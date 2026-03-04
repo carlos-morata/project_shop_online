@@ -92,4 +92,5 @@ module.exports = {
     getProductsByGenAndCatModel,
     getProductByIdModel,
     searchProductsModel,
+    getProductsModel
 }
