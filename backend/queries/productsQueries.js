@@ -12,20 +12,18 @@ const queries = {
     // Leer Productos + categoría
         getProducts:
             ` SELECT * FROM products
-                WHERE 1=1
-                    AND ($1::text IS NULL OR LOWER(gender) = LOWER($1))
+                WHERE ($1::text IS NULL OR LOWER(gender) = LOWER($1))
                     AND ($2::text IS NULL OR LOWER(category) = LOWER($2))
-                ORDER BY product_id
+                ORDER BY id ASC
                 LIMIT $3
                 OFFSET $4;`,
     
-    // Cantidad de Productos
-        quantityProducts:
-            `SELECT COUNT(*)
+    // Cantidad total de Productos
+        totaQuantityProducts:
+            `SELECT COUNT(*) AS total
                 FROM products
-                WHERE 1=1
-                    AND ($1::text IS NULL OR LOWER(gender) = LOWER($1))
-                    AND ($2::text IS NULL OR LOWER(category) = LOWER($2))`,
+                WHERE ($1::text IS NULL OR LOWER(gender) = LOWER($1))
+                    AND ($2::text IS NULL OR LOWER(category) = LOWER($2));`,
             
     // Leer Productos por genero
     getProductsByGender:
