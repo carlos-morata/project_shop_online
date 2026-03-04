@@ -28,9 +28,15 @@ const deleteProduct = async(req, res) => {
 
 const getProducts = async (req, res) => {
     try {
-        // const { gender, category, page, limit } = req.query;
-        console.log(req.query);
-        res.status(200).json({ message: "OK" })
+        const { gender, category, page, limit } = req.query;
+
+        const products = await productModels.getProductsModel(gender, category, parseInt(limit) || 16, parseInt(page) || 1);
+
+        if(!products || products.length === 0) {
+            return res.status(404).json({ message: `No hay productos para mostrar ${products}`});
+        }
+
+        return res.status(200).json(products);
     } catch(error) {
         console.error(error);
         res.status(500).json({ error: "Error interno del servidor" });
