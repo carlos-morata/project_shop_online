@@ -61,9 +61,9 @@ const getProductByIdModel = async (gender, category, product_id) => {
     }
 }
 
-const getProductsModel = async (query) => {
+const searchProductsModel = async (query) => {
     try {
-        const resultProducts = await pool.query(queries.getProducts, [query]);
+        const resultProducts = await pool.query(queries.searchProducts, [query]);
         return resultProducts.rows;
     } catch (error) {
         console.error('Error al mostrar el Producto: ', error.message);
@@ -78,5 +78,5 @@ module.exports = {
     getCategoriesByGenderModel,
     getProductsByGenAndCatModel,
     getProductByIdModel,
-    getProductsModel,
+    searchProductsModel,
 }

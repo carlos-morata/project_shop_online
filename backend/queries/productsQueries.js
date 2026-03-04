@@ -8,8 +8,18 @@ const queries = {
     deleteProduct:
         ` DELETE FROM products
             WHERE product_id = $1;`,
+
+    // Leer Productos + categoría
+        getProducts:
+            ` SELECT * FROM products
+                WHERE 1=1
+                    AND ($1::text IS NULL OR LOWER(gender) = LOWER($1))
+                    AND ($2::text IS NULL OR LOWER(category) = LOWER($2))
+                ORDER BY product_id
+                LIMIT $3
+                OFFSET $4;`,
             
-    // Leer Productos
+    // Leer Productos por genero
     getProductsByGender:
         ` SELECT * FROM products 
         WHERE gender = $1;`,
@@ -35,7 +45,7 @@ const queries = {
             WHERE gender = $1 AND LOWER(category) = $2 AND product_id = $3;` ,
     
     // Buscar Productos
-    getProducts:
+    searchProducts:
         ` SELECT * FROM products
             WHERE name ILIKE '%' || $1 || '%';`,
 }

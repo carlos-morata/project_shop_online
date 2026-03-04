@@ -26,6 +26,17 @@ const deleteProduct = async(req, res) => {
     }
 }
 
+const getProducts = async (req, res) => {
+    try {
+        // const { gender, category, page, limit } = req.query;
+        console.log(req.query);
+        res.status(200).json({ message: "OK" })
+    } catch(error) {
+        console.error(error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+}
+
 const getByGender = async (req, res) => {
     try {
         const { gender } = req.params;
@@ -90,14 +101,14 @@ const getProductById = async (req, res) => {
     }
 }
 
-const getProducts = async (req, res) => {
+const searchProducts = async (req, res) => {
     try {
         const { query } = req.query;
         
         if(!query || query.trim() === "") {
             return res.status(400).json({ message: "Debe buscar un producto real" });
         }
-        const resultProducts = await productModels.getProductsModel(query);
+        const resultProducts = await productModels.searchProductsModel(query);
         res.status(200).json(resultProducts);
         
     } catch(error) {
@@ -109,9 +120,10 @@ const getProducts = async (req, res) => {
 module.exports = {
     createProduct,
     deleteProduct,
+    getProducts,
     getByGender,
     getCategoriesByGender,
     getProductsByGenAndCat,
     getProductById,
-    getProducts,
+    searchProducts,
 }

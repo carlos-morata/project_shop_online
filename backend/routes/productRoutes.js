@@ -8,6 +8,9 @@ router.post('/api/product', productControllers.createProduct);
 // http://localhost:3000/api/product/2 -> Eliminar Producto - Administrador
 router.delete('/api/product/:product_id', productControllers.deleteProduct);
 
+// http://localhost:3000/api/products
+router.get('/api/products', productControllers.getProducts);
+
 // http://localhost:3000/genero/mujer
 router.get('/genero/:gender', productControllers.getByGender);
 
@@ -22,6 +25,6 @@ router.get('/:gender/:category', productControllers.getProductsByGenAndCat);
 router.get('/:gender/:category/:product_id', productControllers.getProductById);
 
 // http://localhost:3000/productos/buscar?query=camiseta
-router.get('/buscar', productControllers.getProducts);
+router.get('/buscar', productControllers.searchProducts);
 
 module.exports = router;
