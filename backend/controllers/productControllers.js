@@ -34,13 +34,14 @@ const getProducts = async (req, res) => {
         const pageNumber = parseInt(page) || 1;
         const limitNumber = parseInt(limit) || 16;
         
-        const { products, total } = await productModels.getProductsModel(gender, category, limitNumber, pageNumber);
+        const { products, total, categories } = await productModels.getProductsModel(gender, category, limitNumber, pageNumber);
         const totalPage = Math.ceil(total / limitNumber);
 
         if(!products || products.length === 0) {
             return res.status(200).json({  
                     message: `Producto vacío`,
-                    products: [],
+                    products: products || [],
+                    categories: categories || [],
                     pagination: {
                         total: 0,
                         page: 1,
@@ -52,12 +53,15 @@ const getProducts = async (req, res) => {
 
         return res.status(200).json({
             products: products, 
+            categories: categories,
             pagination: {
                 total: total,
                 page: pageNumber || 1,
                 limit: limitNumber,
                 totalPage: totalPage
-        }});
+            }
+        });
+
     } catch(error) {
         console.error(error);
         res.status(500).json({ error: "Error interno del servidor" });

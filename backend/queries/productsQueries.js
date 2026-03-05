@@ -29,7 +29,7 @@ const queries = {
         GetCategories: 
             `SELECT category, COUNT(*) AS total_products
                 FROM products
-                WHERE ($1::text) IS NULL OR gender::text = LOWER($1))
+                WHERE ($1::text IS NULL OR gender::text = LOWER($1))
                 GROUP BY category
                 ORDER BY category ASC`,
     
