@@ -26,6 +26,7 @@ const deleteProduct = async(req, res) => {
     }
 }
 
+// Leer Productos por Género, Categoría y Paginación
 const getProducts = async (req, res) => {
     try {
         const { gender, category, page, limit } = req.query;
@@ -43,6 +44,7 @@ const getProducts = async (req, res) => {
     }
 }
 
+// Leer Producto específico por id
 const getProductById = async (req, res) => {
     try {
         const { gender, category, product_id } = req.params;
@@ -60,6 +62,7 @@ const getProductById = async (req, res) => {
     }
 }
 
+// Buscar Productos
 const searchProducts = async (req, res) => {
     try {
         const { query } = req.query;
