@@ -19,7 +19,7 @@ const queries = {
                 OFFSET $4;`,
     
     // Cantidad total de Productos
-        countQuery:
+        countProductsQuery:
             `SELECT COUNT(*) AS total
                 FROM products
                 WHERE ($1::gender_type IS NULL OR gender = $1::gender_type)
