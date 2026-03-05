@@ -14,8 +14,9 @@ const CategoryLanding = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/categorias/${gender}`)
-        setCategories(response.data);
+        const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}`);
+        console.log("Datos del nuevo backend:", response.data);
+        setCategories(response.data.products);
       } catch(error) {
         console.log(error);
       }
@@ -23,9 +24,6 @@ const CategoryLanding = () => {
     fetchCategories();
   }, [gender]);
 
-  // Texto moda femenina / masculina
-  // const textFemale = "femenina";
-  // const textMale = "masculina";
   const isWomen = gender?.toLowerCase() === 'mujer';
   // const textGenre = textIsWomen ?  textFemale : textMale;
 
