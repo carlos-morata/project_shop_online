@@ -24,10 +24,15 @@ const deleteProductModel = async (product_id) => {
 const getProductsModel = async(gender, category, limit = 16, page = 1) => {
     try {
         const offset = (page -1) * limit;
-        const values = [gender || null, category || null, limit, offset];
+        const values = [ gender || null, category || null, limit, offset ];
+        const countValues = [ gender || null, category || null];
 
-        const resultProducts = await pool.query(queries.getProducts, values);
-        return resultProducts.rows;
+        const [resultProducts, resultCountProducts] = await Promise.all([
+            pool.query(queries.getProducts, values),
+            pool.query(queries.countProductsQuery, countValues)
+        ]);
+
+        return {products: resultProducts.rows, total: parseInt(resultCountProducts.rows[0].total)};
     } catch(error) {
         console.log('Error al mostrar Productos: ', error.message);
         throw new Error("Error al mostrar Productos");
