@@ -34,36 +34,6 @@ const getProductsModel = async(gender, category, limit = 16, page = 1) => {
     }
 }
 
-// const getByGenderModel = async (gender) => {
-//     try {
-//         const resultProductGender = await pool.query(queries.getProductsByGender, [gender]);
-//         return resultProductGender.rows;
-//     } catch (error) {
-//         console.error('Error al mostrar Productos por Género: ', error.message);
-//         throw new Error('Error al mostrar Productos por Género');
-//     }
-// }
-
-// const getCategoriesByGenderModel = async (gender) => {
-//     try {
-//         const resultCategoryGender = await pool.query(queries.getCategoriesByGender, [gender]);
-//         return resultCategoryGender.rows;
-//     } catch (error) {
-//         console.error('Error al mostrar Categorías por Género: ', error.message);
-//         throw new Error('Error al mostrar Categorías por Género');
-//     }
-// }
-
-// const getProductsByGenAndCatModel = async (gender, category) => {
-//     try {
-//         const resultGenderCategory = await pool.query(queries.getProductsByGenderAndCategory, [gender, category]);
-//         return resultGenderCategory.rows;
-//     } catch (error) {
-//         console.error('Error al mostrar Productos por Categorías y Género: ', error.message);
-//         throw new Error('Error al mostrar Productos por Categorías y Género');
-//     }
-// }
-
 const getProductByIdModel = async (gender, category, product_id) => {
     try {
         const resultProductId = await pool.query(queries.getProductsById, [gender, category, product_id]);
@@ -88,9 +58,6 @@ module.exports = {
     createProductModel,
     deleteProductModel,
     getProductsModel,
-    // getByGenderModel,
-    // getCategoriesByGenderModel,
-    // getProductsByGenAndCatModel,
     getProductByIdModel,
     searchProductsModel,
 }
