@@ -24,26 +24,6 @@ const queries = {
                 FROM products
                 WHERE ($1::gender_type IS NULL OR gender = $1::gender_type)
                     AND ($2::text IS NULL OR LOWER(category) = $2);`,
-            
-    // Leer Productos por genero
-    // getProductsByGender:
-    //     ` SELECT * FROM products 
-    //     WHERE gender = $1;`,
-    
-    // Leer Categoría por Género 
-    // getCategoriesByGender: 
-    //     // ` SELECT DISTINCT category FROM products
-    //     //     WHERE gender = $1`,
-    //     ` SELECT category,
-    //         COUNT(*)::int AS total_products
-    //         FROM products WHERE gender = $1
-    //         GROUP BY category
-    //         ORDER BY category;`,
-    
-    // Leer Productos Por Categoría y Género
-    // getProductsByGenderAndCategory: 
-    //     ` SELECT * FROM products
-    //         WHERE gender = $1 AND LOWER(category) = LOWER($2);`,
     
     // Leer un Producto por ID
     getProductsById:
