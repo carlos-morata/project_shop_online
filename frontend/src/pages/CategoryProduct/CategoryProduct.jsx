@@ -9,14 +9,16 @@ const CategoryProduct = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/${gender}/${category}`);
-        setProducts(response.data);
+        const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}&category=${category}`);
+        setProducts(response.data || []);
+
       } catch (error) {
         console.log(error);
       }
     };
     fetchProducts();
   }, [gender, category]);
+  
   return <section className="products-container">
     <h1>{category} para {gender}s</h1>
 
