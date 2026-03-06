@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Outlet, NavLink } from "react-router-dom";
 import axios from 'axios';
 import sectionImgWomen from '../../../public/images/SeccionPrincipalMujer.png';
 import sectionImgMen from '../../assets/images/seccionHombre.png';
 
 
 const CategoryLanding = () => {
-  const { genero } = useParams(); // Mujer / hombre
-  const gender = genero;
+  const { gender } = useParams(); // Mujer / hombre
 
   const [ categories, setCategories ] = useState([]);
-  const [ products, setProducts ] = useState([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -18,7 +16,6 @@ const CategoryLanding = () => {
         const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}`);
 
         setCategories(response.data.categories || []);
-        setProducts(response.data.products || []);
 
       } catch(error) {
         console.log(error);
@@ -44,11 +41,12 @@ const CategoryLanding = () => {
     <section className="btn-categories">
       <h3>Categorías</h3>
       { categories.map((item, index) => (
-        <Link key={index} to={`/${gender}/${item.category.toLowerCase()}`} className="category-link">
+        <NavLink key={index} to={`/${gender}/${item.category.toLowerCase()}`} className="category-link">
           {item.category} <span>{item.total_products}</span>
-        </Link>
+        </NavLink>
       ))}
     </section>
+    <Outlet />
   </section>);
 };
 
