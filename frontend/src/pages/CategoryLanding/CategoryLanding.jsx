@@ -9,14 +9,17 @@ const CategoryLanding = () => {
   const { genero } = useParams(); // Mujer / hombre
   const gender = genero;
 
-  const [categories, setCategories] = useState([]);
+  const [ categories, setCategories ] = useState([]);
+  const [ products, setProducts ] = useState([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}`);
-        console.log("Datos del nuevo backend:", response.data);
-        setCategories(response.data.products);
+
+        setCategories(response.data.categories || []);
+        setProducts(response.data.products || []);
+
       } catch(error) {
         console.log(error);
       }
