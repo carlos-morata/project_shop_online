@@ -28,6 +28,7 @@ App.jsx
             <Img /> ---> Imagen
             <Categories /> ---> Categorías Abrigos, etc...
             <ProductsList />
+            <AllProducts />
         </CategoryLanding>
 
         <CategoryProduct> ---> Página Categoría "Abrigos" --> Ruta /:genero/:categoria (/mujer/abrigos)
@@ -72,6 +73,7 @@ App.jsx
                 npx crcf src/components/layout/Footer/FooterLinks SocialLinks -j --notest -f
     -- pages/
         npx crcf src/pages/HomePage CategoryLanding CategoryProduct ProductDetail LegalPage AuthorPage NotFoundPage -j --notest -f
+        npx crcf src/pages/AllProducts -j --notest -f
         npx crcf src/pages/UserPage -j --notest -f
 
 -- styles/
