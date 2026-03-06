@@ -13,12 +13,13 @@ import ContactForm from './components/forms/ContactForm';
 import HomePage from './pages/HomePage';
 import CategoryLanding from './pages/CategoryLanding';
 import CategoryProduct from './pages/CategoryProduct';
+import AllProducts from './pages/AllProducts';
 import ProductDetail from './pages/ProductDetail';
 import LegalPage from './pages/LegalPage';
 import AuthorPage from './pages/AuthorPage';
 import SearchPage from './pages/SearchPage'
 import NotFoundPage from './pages/NotFoundPage';
-import UserPage from './pages/UserPage'
+import UserPage from './pages/UserPage';
 
 import './styles/styles.scss'
 
@@ -42,8 +43,10 @@ function App() {
         <Route path='/contacto' element={<ContactForm />}/> {/* Contacto */}
 
         {/* Rutas Dinámicas */}
-        <Route path='/:genero' element={<CategoryLanding />}/> {/* Mujer, Hombre, etc */}
-        <Route path='/:gender/:category' element={<CategoryProduct />}/> {/* mujer/abrigos */}
+        <Route path='/:gender' element={<CategoryLanding />}> {/* Mujer, Hombre, etc */}
+          <Route index element={<AllProducts />}/> {/* mujer/todos los productos */}
+          <Route path=':category' element={<CategoryProduct />}/> {/* mujer/abrigos */}
+        </Route>
         <Route path='/:gender/:category/:product_id' element={<ProductDetail />}/> {/* mujer/abrigos/abrigo_1 */}
         <Route path='/buscar/:query' element={<SearchPage />} />
 
