@@ -52,7 +52,7 @@ const ProductDetail = () => {
     setSelectedSizes(e.target.value);
   }
 
-  if (!product) return <p>Cargando detalle...</p>;
+  if (!product) return <p>Cargando detalle de producto...</p>;
 
   return (
   <>
