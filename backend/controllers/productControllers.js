@@ -73,10 +73,13 @@ const getProductById = async (req, res) => {
     try {
         const { gender, category, product_id } = req.params;
         const product = await productModels.getProductByIdModel(gender, category, product_id);
-        console.log(product)
 
         if(!product) {
             return res.status(400).json({ message: "No se encuentra el producto"});
+        }
+
+        if(product && product.sizes) {
+            product.sizes = product.sizes.split(',').map(size => size.trim());
         }
 
         res.status(200).json(product);

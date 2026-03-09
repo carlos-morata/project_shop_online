@@ -38,8 +38,8 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProductId = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/${gender}/${category}/${product_id}`);
-        setProduct(response.data);
+        const response = await axios.get(`http://localhost:3000/api/products/${gender}/${category}/${product_id}`);
+        setProduct(response.data.products || []);
       } catch (error) {
         console.log(error);
       }
