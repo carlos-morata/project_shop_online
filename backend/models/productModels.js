@@ -48,7 +48,7 @@ const getProductsModel = async(gender, category, limit = 16, page = 1) => {
 const getProductByIdModel = async (gender, category, product_id) => {
     try {
         const resultProductId = await pool.query(queries.getProductsById, [gender, category, product_id]);
-        return resultProductId.rows;
+        return resultProductId.rows[0];
     } catch (error) {
         console.error('Error al mostrar el Producto: ', error.message);
         throw new Error('Error al mostrar el Producto');
