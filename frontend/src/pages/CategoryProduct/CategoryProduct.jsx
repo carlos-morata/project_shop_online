@@ -10,7 +10,8 @@ const CategoryProduct = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}&category=${category}`);
-        setProducts(response.data || []);
+
+        setProducts(response.data.products || []);
 
       } catch (error) {
         console.log(error);
@@ -20,7 +21,7 @@ const CategoryProduct = () => {
   }, [gender, category]);
   
   return <section className="products-container">
-    <h1>{category} para {gender}s</h1>
+    <h1>{category}</h1>
 
     {products.length === 0 && <p>No hay productos disponibles</p>}
 
