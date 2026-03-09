@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, Outlet, NavLink } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 
 const AllProducts = () => {
   const { gender } = useParams();
   const [ products, setProducts ] = useState([]);
+  const [ totalProducts, setTotalProducts ] = useState(0);
 
   useEffect(() => {
     const fetchAllProducts = async () => {
@@ -12,6 +13,10 @@ const AllProducts = () => {
         const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}`);
 
         setProducts(response.data.products || []);
+
+        if(response.data.pagination) {
+          setTotalProducts(response.data.pagination.total);
+        }
 
       } catch (error) {
         console.log(error);
@@ -21,6 +26,7 @@ const AllProducts = () => {
   }, [gender])
 
   return <section className="products-container">
+    <p>Mostrando <strong>{totalProducts}</strong> productos</p>
     { products.map((item) => (
       <Link key={item.product_id} to={`/${gender}/${item.category.toLowerCase()}/${item.product_id}`}>
         <article className="product-article">
