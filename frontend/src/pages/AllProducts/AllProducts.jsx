@@ -43,15 +43,18 @@ const AllProducts = () => {
 
   return <section className="products-container">
     <p className="showProducts-text">Mostrando <strong>{totalProducts}</strong> productos</p>
-    { products.map((item) => (
-      <Link key={item.product_id} to={`/${gender}/${item.category?.toLowerCase()}/${item.product_id}`}>
-        <article className="product-article">
-          <img src={item.url_image} alt={item.name} />
-          <h3>{item.name}</h3>
-          <span>{item.price} €</span>
-        </article>
-      </Link>
-    ))}
+    <hr />
+    <section className="products-grid">
+      { products.map((item) => (
+        <Link key={item.product_id} to={`/${gender}/${item.category?.toLowerCase()}/${item.product_id}`}>
+          <article className="product-article">
+            <img src={item.url_image} alt={item.name} />
+            <h3>{item.name}</h3>
+            <span>{item.price} €</span>
+          </article>
+        </Link>
+      ))}
+    </section>
 
     { totalPages > 1 && (
       <section className="pagination-container">

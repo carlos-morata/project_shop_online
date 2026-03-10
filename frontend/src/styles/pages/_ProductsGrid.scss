@@ -1,0 +1,24 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.products-container {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100vw;
+    box-sizing: variables.$border-box;
+
+    .showProducts-text {
+        align-self: center;
+    }
+
+    hr {
+        width: 90%;
+            margin: 0 auto;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+}
+
+.products-grid {
+    width: 90%;
+}
