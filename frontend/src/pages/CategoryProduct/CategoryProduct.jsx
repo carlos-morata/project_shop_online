@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
+import Pagination from "../../components/common/Pagination";
 
 const CategoryProduct = () => {
   const { gender, category } = useParams();
   const [ products, setProducts ] = useState([]);
   const [ totalProducts, setTotalProducts ] = useState(0);
+  const [ currentPage, setCurrentPage ] = useState(1);
+  const [ totalPages, setTotalPages ] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [gender, category]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}&category=${category}`);
+        const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}&category=${category}&limit=1&page=${currentPage}`);
 
         setProducts(response.data.products || []);
 
         if(response.data.pagination) {
           setTotalProducts(response.data.pagination.total);
+          setTotalPages(response.data.pagination.totalPage);
         }
 
       } catch (error) {
@@ -23,7 +31,15 @@ const CategoryProduct = () => {
       }
     };
     fetchProducts();
-  }, [gender, category]);
+  }, [gender, category, currentPage]);
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  }
+  
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  }
   
   return <section className="products-container">
       <p className="showProducts-text">Mostrando <strong>{totalProducts}</strong> {category}</p>
@@ -39,6 +55,13 @@ const CategoryProduct = () => {
       </Link>
         ))}
     </section>
+
+    <Pagination
+      currentPage={currentPage}
+      totalPages={totalPages}
+      handlePrevPage={handlePrevPage}
+      handleNextPage={handleNextPage} 
+    />
   </section>;
 };
 

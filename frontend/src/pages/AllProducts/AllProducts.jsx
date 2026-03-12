@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
+import Pagination from '../../components/common/Pagination';
 
 const AllProducts = () => {
   const { gender, category } = useParams();
@@ -17,7 +18,7 @@ const AllProducts = () => {
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}&page=${currentPage}`);
+        const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}&limit=2&page=${currentPage}`);
 
         setProducts(response.data.products || []);
 
@@ -56,23 +57,12 @@ const AllProducts = () => {
       ))}
     </section>
 
-    { totalPages > 1 && (
-      <section className="pagination-container">
-        <button 
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}
-          className="btn-pagination">
-            Anterior
-        </button>
-        <p>Página {currentPage} de {totalPages}</p>
-        <button 
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-          className="btn-pagination">
-            Siguiente
-        </button>
-      </section>
-    )}
+    <Pagination
+      currentPage={currentPage}
+      totalPages={totalPages}
+      handlePrevPage={handlePrevPage}
+      handleNextPage={handleNextPage} 
+    />
   </section>;
 };
 
