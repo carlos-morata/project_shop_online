@@ -10,14 +10,14 @@ const Pagination = ({ currentPage, totalPages, handlePrevPage, handleNextPage })
         <button 
           onClick={handlePrevPage}
           disabled={currentPage === 1}
-          className="btn-pagination">
+          className="pagination-buttons">
            &#8678;
         </button>
-        <p>Página {currentPage} de {totalPages}</p>
+        <p className="pagination-text">Página {currentPage} de {totalPages}</p>
         <button 
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
-          className="btn-pagination">
+          className="pagination-buttons">
             &#8680;
         </button>
       </section>

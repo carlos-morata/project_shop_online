@@ -56,5 +56,29 @@
     .product-article h2 {
         color: variables.$text-main;
     }
+}
 
+.pagination-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1.5rem;
+    box-sizing: variables.$border-box;
+
+    .pagination-text {
+        color: variables.$text-muted;
+        font-weight: variables.$font-bold;
+    }
+
+    .pagination-buttons {
+        font-size: variables.$title3;
+        padding: 0.5rem;
+        color: variables.$primary;
+        background-color: variables.$background-light;
+        font-weight: variables.$font-bold;
+        border-radius: 50px;
+        border: none;
+        box-shadow: 2px 0px 7px 2px variables.$text-muted;
+    }
 }
