@@ -46,11 +46,11 @@ const AllProducts = () => {
     <hr />
     <section className="products-grid">
       { products.map((item) => (
-        <Link key={item.product_id} to={`/${gender}/${item.category?.toLowerCase()}/${item.product_id}`}>
+        <Link className="product-link" key={item.product_id} to={`/${gender}/${item.category?.toLowerCase()}/${item.product_id}`}>
           <article className="product-article">
-            <img src={item.url_image} alt={item.name} />
-            <h3>{item.name}</h3>
-            <span>{item.price} €</span>
+            <img className="product-image" src={item.url_image} alt={item.name} />
+            <h3 className="product-title">{item.name}</h3>
+            <p className="product-price">{item.price} €</p>
           </article>
         </Link>
       ))}
