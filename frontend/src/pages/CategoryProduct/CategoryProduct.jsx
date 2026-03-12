@@ -28,9 +28,6 @@ const CategoryProduct = () => {
   return <section className="products-container">
       <p className="showProducts-text">Mostrando <strong>{totalProducts}</strong> {category}</p>
       <hr />
-
-    {/* {products.length === 0 && <p>No hay productos disponibles</p>} */}
-
     <section className="products-grid">
       {products.map((item) => ( 
       <Link className="product-link" key={item.product_id} to={`/${gender}/${item.category}/${item.product_id}`}>

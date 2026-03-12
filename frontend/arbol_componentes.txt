@@ -61,7 +61,7 @@ App.jsx
 - src/
     -- components/
         -- common/
-            npx crcf src/components/common/
+            npx crcf src/components/common/Pagination -j --notest -f
         -- forms/
             npx crcf src/components/forms/RegisterUser ContactForm -j --notest -f
         -- layout/
