@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams, Outlet, NavLink } from "react-router-dom";
 import axios from 'axios';
 import sectionImgWomen from '../../../public/images/SeccionPrincipalMujer.png';
-import sectionImgMen from '../../assets/images/seccionHombre.png';
+import sectionImgMen from '../../../public/images/SeccionPrincipalHombre.png'
 
 
 const CategoryLanding = () => {
