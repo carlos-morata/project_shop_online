@@ -10,13 +10,20 @@
     box-sizing: variables.$border-box;
     font-family: variables.$font-family;
 
+    .gender-link {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        color: variables.$background-white;
+    }
+
     .section-gender-top {
-            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
             color: variables.$background-white;
+
 
             .gender-main-img {
                 width: 90%;

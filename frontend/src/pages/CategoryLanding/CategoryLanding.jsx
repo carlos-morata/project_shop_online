@@ -32,11 +32,13 @@ const CategoryLanding = () => {
     
   return (
     <section className="gender-container">
+      <Link className="gender-link" to={`/${gender}`}>
       <section className="section-gender-top">
           <img src={sectionImg} alt="Imagen principal sección" className="gender-main-img" />
         <h2 className="gender-title">Moda {gender}</h2>
         <p>Descubre una selección editorial de piezas atemporales diseñadas para la {gender} contemporánea.</p>
       </section>
+      </Link>
 
     <section className="btn-categories">
       <h3>Categorías</h3>
