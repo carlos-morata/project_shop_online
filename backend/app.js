@@ -14,7 +14,7 @@ app.use('/', userRoutes);
 
 // Importar Rutas de Productos
 const productRoutes = require('./routes/productRoutes');
-app.use('/', productRoutes);
+app.use('/api/products', productRoutes);
 
 // Importar Rutas de Carrito
 const cartRoutes = require('./routes/cartRoutes');

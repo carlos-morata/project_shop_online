@@ -6,7 +6,16 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
     box-sizing: variables.$border-box;
+    font-family: variables.$font-family;
+
+    .gender-link {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        color: variables.$background-white;
+    }
 
     .section-gender-top {
             display: flex;
@@ -15,9 +24,10 @@
             position: relative;
             color: variables.$background-white;
 
+
             .gender-main-img {
                 width: 90%;
-                height: 230px;
+                height: 245px;
                 object-fit: cover;
                 border-radius: variables.$border-radius2;
             }
@@ -32,7 +42,7 @@
             }
         
             .gender-title + p {
-                width: 75%;
+                width: 85%;
                 position: absolute;
                 top: 45px;
                 font-size: 0.95rem;
@@ -47,31 +57,43 @@
 
 
     .btn-categories {
-        width: 95%;
-        padding: 10px;
+        width: 90%;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 10px;
+        gap: 0.25rem;
+        padding: 10px;
+        margin-top: 1.5rem;
+        box-sizing: variables.$border-box;
     }
 
-    .btn-categories h2 {
-        text-align: center;
-        font-size: variables.$title3;
-        color: #d4c382;
+    .btn-categories h3 {
+        font-size: variables.$text2;
+        text-transform: uppercase;
+        color: variables.$text-muted;
+        font-weight: variables.$font-bold;
+        font-family: variables.$font-family;
+        letter-spacing: 0.4px;
     }
 
-    .btn-categories a {
+    .category-link {
+        display: flex;
+        justify-content: space-between;
         text-decoration: none;
-        width: 45%;
+        color: variables.$text-main;
+        font-size: variables.$text2;
+        padding: 10px 0px;
+
+        span {
+            color: variables.$text-muted;
+        }
     }
 
-    button {
-        width: 100%;
-        background-color: variables.$text-main;
-        color: #fff;
-        border: 1px solid variables.$background-dark;
-        padding: 6px;
-    }
+    // button {
+    //     width: 100%;
+    //     background-color: variables.$text-main;
+    //     color: #fff;
+    //     border: 1px solid variables.$background-dark;
+    //     padding: 6px;
+    // }
 }

@@ -26,53 +26,49 @@ const deleteProduct = async(req, res) => {
     }
 }
 
-const getByGender = async (req, res) => {
+// Leer Productos por Género, Categoría y Paginación
+const getProducts = async (req, res) => {
     try {
-        const { gender } = req.params;
-        const products = await productModels.getByGenderModel(gender);
+        const { gender, category, page, limit } = req.query;
+
+        const pageNumber = parseInt(page) || 1;
+        const limitNumber = parseInt(limit) || 16;
+        
+        const { products, total, categories } = await productModels.getProductsModel(gender, category, limitNumber, pageNumber);
+        const totalPage = Math.ceil(total / limitNumber);
 
         if(!products || products.length === 0) {
-            return res.status(404).json({ message: `No hay productos para ${gender}`});
-        }
-        res.status(200).json(products);
-    } catch(error) {
-        console.error(error);
-        res.status(500).json({ error: "Error interno del servidor" });
-    }
-}
-
-const getCategoriesByGender = async (req, res) => {
-    try {
-        const { gender } = req.params;
-       const categories = await productModels.getCategoriesByGenderModel(gender);
-
-       if(categories.length === 0) {
-            return res.status(404).json({ message: `No se encuentran categorías`});
-       }
-
-       res.status(200).json(categories);
-    } catch(error) {
-        console.error(error);
-        res.status(500).json({ error: "Error interno del servidor" });
-    }
-}
-
-const getProductsByGenAndCat = async (req, res) => {
-    try {
-        const { gender, category } = req.params;        
-        const products = await productModels.getProductsByGenAndCatModel(gender, category);
-
-        if(!products || !products.length === 0) {
-            return res.status(400).json({ message: "No se encuentran productos"});
+            return res.status(200).json({  
+                    message: `Producto vacío`,
+                    products: products || [],
+                    categories: categories || [],
+                    pagination: {
+                        total: 0,
+                        page: 1,
+                        limit: 16,
+                        totalPage: 0
+                    }
+                });
         }
 
-        res.status(200).json(products);
+        return res.status(200).json({
+            products: products, 
+            categories: categories,
+            pagination: {
+                total: total,
+                page: pageNumber || 1,
+                limit: limitNumber,
+                totalPage: totalPage
+            }
+        });
+
     } catch(error) {
         console.error(error);
         res.status(500).json({ error: "Error interno del servidor" });
     }
 }
 
+// Leer Producto específico por id
 const getProductById = async (req, res) => {
     try {
         const { gender, category, product_id } = req.params;
@@ -82,6 +78,10 @@ const getProductById = async (req, res) => {
             return res.status(400).json({ message: "No se encuentra el producto"});
         }
 
+        if(product && product.sizes) {
+            product.sizes = product.sizes.split(',').map(size => size.trim());
+        }
+
         res.status(200).json(product);
     } catch(error) {
         console.error(error);
@@ -89,14 +89,15 @@ const getProductById = async (req, res) => {
     }
 }
 
-const getProducts = async (req, res) => {
+// Buscar Productos
+const searchProducts = async (req, res) => {
     try {
         const { query } = req.query;
         
         if(!query || query.trim() === "") {
             return res.status(400).json({ message: "Debe buscar un producto real" });
         }
-        const resultProducts = await productModels.getProductsModel(query);
+        const resultProducts = await productModels.searchProductsModel(query);
         res.status(200).json(resultProducts);
         
     } catch(error) {
@@ -108,9 +109,7 @@ const getProducts = async (req, res) => {
 module.exports = {
     createProduct,
     deleteProduct,
-    getByGender,
-    getCategoriesByGender,
-    getProductsByGenAndCat,
+    getProducts,
     getProductById,
-    getProducts
+    searchProducts,
 }

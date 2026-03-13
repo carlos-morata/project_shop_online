@@ -32,6 +32,10 @@
 --     stock INT NOT NULL DEFAULT 0
 -- );
 
+-- ÍNDICE COMPUESTO 
+-- CREATE INDEX idx_products_gender_category_lower
+-- ON products (LOWER(gender), LOWER(category));
+
 -- TABLA
 -- CREATE TABLE orders_items (
 -- 	order_items SERIAL PRIMARY KEY,

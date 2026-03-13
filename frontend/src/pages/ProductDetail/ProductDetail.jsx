@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 const ProductDetail = () => {
   // const navigate = useNavigate();
   const { gender, category, product_id } = useParams();
-  const [ product, setProduct ] = useState([]);
+  const [ product, setProduct ] = useState(null);
 
   const [selectedSizes, setSelectedSizes] = useState("");
 
@@ -38,7 +38,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProductId = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/${gender}/${category}/${product_id}`);
+        const response = await axios.get(`http://localhost:3000/api/products/${gender}/${category.toLowerCase()}/${product_id}`);
         setProduct(response.data);
       } catch (error) {
         console.log(error);
@@ -52,23 +52,25 @@ const ProductDetail = () => {
     setSelectedSizes(e.target.value);
   }
 
+  if (!product) return <p>Cargando detalle de producto...</p>;
+
   return (
   <>
-    {product.map((item) => (
     <section key={uuidv4()} className="productDetail-container">
-      <img src={item.url_image} alt={item.description} title={item.name} />
-      <h1>{item.name}</h1>
-      <p>{item.price} €</p>
+      <img src={product.url_image} alt={product.description} title={product.name} />
+      <h1>{product.name}</h1>
+      <p>{product.price} €</p>
+
       <select value={selectedSizes} onChange={handleSizeChange}>
         <option value="" disabled> Elige tú Talla </option>
-        {item.sizes.map((size) => (
+        {product.sizes.map((size) => (
           <option key={uuidv4()} value={size}>{size}</option>
         ))}
       </select> 
-      {/* <button className="add-btn" onClick={() => handleAddToCart(item)}>Añadir al Carrito</button> */}
-      <p>{item.description}</p>
+
+      {/* <button className="add-btn" onClick={() => handleAddToCart(product)}>Añadir al Carrito</button> */}
+      <p>{product.description}</p>
     </section>
-    ))}
   </>
   );
 }

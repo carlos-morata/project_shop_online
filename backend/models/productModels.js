@@ -21,49 +21,43 @@ const deleteProductModel = async (product_id) => {
         return resultDeleteProduct
 }
 
-const getByGenderModel = async (gender) => {
+const getProductsModel = async(gender, category, limit = 16, page = 1) => {
     try {
-        const resultProductGender = await pool.query(queries.getProductsByGender, [gender]);
-        return resultProductGender.rows;
-    } catch (error) {
-        console.error('Error al mostrar Productos por Género: ', error.message);
-        throw new Error('Error al mostrar Productos por Género');
-    }
-}
+        const offset = (page -1) * limit;
+        const values = [ gender || null, category || null, limit, offset ];
+        const countValues = [ gender || null, category || null];
+        const summaryValues = [ gender || null];
 
-const getCategoriesByGenderModel = async (gender) => {
-    try {
-        const resultCategoryGender = await pool.query(queries.getCategoriesByGender, [gender]);
-        return resultCategoryGender.rows
-    } catch (error) {
-        console.error('Error al mostrar Categorías por Género: ', error.message);
-        throw new Error('Error al mostrar Categorías por Género');
-    }
-}
+        const [ resultProducts, resultCountProducts, resultSummary ] = await Promise.all([
+            pool.query(queries.getProducts, values),
+            pool.query(queries.countProductsQuery, countValues),
+            pool.query(queries.GetCategories, summaryValues)
+        ]);
 
-const getProductsByGenAndCatModel = async (gender, category) => {
-    try {
-        const resultGenderCategory = await pool.query(queries.getProductsByGenderAndCategory, [gender, category]);
-        return resultGenderCategory.rows;
-    } catch (error) {
-        console.error('Error al mostrar Productos por Categorías y Género: ', error.message);
-        throw new Error('Error al mostrar Productos por Categorías y Género');
+        return { products: resultProducts.rows, 
+            total: parseInt(resultCountProducts.rows[0].total),
+            categories: resultSummary.rows,
+        };
+
+    } catch(error) {
+        console.log('Error al mostrar Productos: ', error.message);
+        throw new Error("Error al mostrar Productos");
     }
 }
 
 const getProductByIdModel = async (gender, category, product_id) => {
     try {
         const resultProductId = await pool.query(queries.getProductsById, [gender, category, product_id]);
-        return resultProductId.rows;
+        return resultProductId.rows[0];
     } catch (error) {
         console.error('Error al mostrar el Producto: ', error.message);
         throw new Error('Error al mostrar el Producto');
     }
 }
 
-const getProductsModel = async (query) => {
+const searchProductsModel = async (query) => {
     try {
-        const resultProducts = await pool.query(queries.getProducts, [query]);
+        const resultProducts = await pool.query(queries.searchProducts, [query]);
         return resultProducts.rows;
     } catch (error) {
         console.error('Error al mostrar el Producto: ', error.message);
@@ -74,9 +68,7 @@ const getProductsModel = async (query) => {
 module.exports = {
     createProductModel,
     deleteProductModel,
-    getByGenderModel,
-    getCategoriesByGenderModel,
-    getProductsByGenAndCatModel,
+    getProductsModel,
     getProductByIdModel,
-    getProductsModel
+    searchProductsModel,
 }
