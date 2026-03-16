@@ -45,7 +45,7 @@ const LoginUser = () => {
     }
   }
 
-  return <section className="login-container">
+  return <section className="userForm-container">
     <h1>Inicia Sesión</h1>
 
     {error && <p>{error}</p>}

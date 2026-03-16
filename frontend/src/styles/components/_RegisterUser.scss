@@ -1,7 +1,7 @@
 @use "../utils/variables.scss" as variables;
 @use '../utils/mixins.scss' as mixins;
 
-.register-container {
+.userForm-container {
     margin-top: 25px;
     width: 100vw;
     box-sizing: variables.$border-box;
