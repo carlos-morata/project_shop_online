@@ -7,7 +7,7 @@
     box-sizing: variables.$border-box;
     font-family: variables.$font-family;
 
-    .register-title {
+    .user-title {
         text-align: center;
         margin-bottom: 10px;
         color: variables.$text-main;
@@ -18,7 +18,7 @@
         }
     }
 
-    .register-form {
+    .user-form {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -26,7 +26,7 @@
         box-sizing: variables.$border-box;
     }
 
-    .register-label {
+    .user-label {
         width: 82%;
         margin-bottom: 4px;
         margin-top: 0.65rem;
@@ -36,11 +36,11 @@
         font-size: 0.65rem;
     }
 
-    .register-label:not(form label:first-child) {
+    .user-label:not(form label:first-child) {
         margin-top: 1.5rem;
     }
 
-    .register-input {
+    .user-input {
         width: 80%;
         padding: 10px;
         background-color: #f2f0ef;
@@ -48,17 +48,17 @@
         color: variables.$text-main;
     }
 
-    .register-input::placeholder {
+    .user-input::placeholder {
         font-size: variables.$text2;
         color: variables.$text-muted;
         text-transform: variables.$uppercase;
     }
 
-    .register-input:focus {
+    .user-input:focus {
         outline: 1px solid variables.$primary;
     }
 
-    .register-button {
+    .user-button {
         width: 85%;
         font-size: 0.90rem;
         padding: 10px;
@@ -69,7 +69,7 @@
         border: none;
     }
 
-    .login-text {
+    .user-text {
         text-align: center;
         margin-top: 1.5rem;
         font-size: variables.$text2;
