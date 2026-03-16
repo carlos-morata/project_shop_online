@@ -49,7 +49,7 @@ const RegisterUser = () => {
   }
 
   return <section className="register-container">
-    <h2 className="register-title">Crear Cuenta</h2>
+    <h2 className="register-title"> <span>Crear</span> Cuenta</h2>
 
     {error && <p>{error}</p>}
 
