@@ -66,11 +66,12 @@ const RegisterUser = () => {
       <label className="register-label" htmlFor="repitePassword">Repite la Contraseña</label>
       <input className="register-input" type="password" name="repitePassword" placeholder="******" required onChange={handleChange} />
 
-      <button type="submit">Regístrarme</button>
+      <button className="register-button" type="submit">Crear Cuenta</button>
     </form>
 
-    <p className="login-text">¿Ya tienes una cuenta de usuario?</p>
+    <p className="login-text">¿Ya tienes una cuenta?
     <Link to="/inicioSesión">Inicia Sesión</Link>
+    </p>
   </section>;
 };
 

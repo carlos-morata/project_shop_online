@@ -5,13 +5,13 @@
     margin-top: 25px;
     width: 100vw;
     box-sizing: variables.$border-box;
+    font-family: variables.$font-family;
 
     .register-title {
         text-align: center;
         margin-bottom: 10px;
         color: variables.$text-main;
         font-size: variables.$title1;
-        font-family: variables.$font-family;
 
         span {
             color: variables.$primary;
@@ -27,49 +27,60 @@
     }
 
     .register-label {
-        margin-bottom: 2px;
+        width: 82%;
+        margin-bottom: 4px;
+        margin-top: 0.65rem;
+        color: #4d4646;
+        font-weight: variables.$font-bold;
+        text-transform: variables.$uppercase;
+        font-size: 0.65rem;
     }
 
     .register-label:not(form label:first-child) {
-        margin-top: 10px;
+        margin-top: 1.5rem;
     }
 
     .register-input {
         width: 80%;
-        padding: 4px;
-        background-color: variables.$background-light;
-        border: 1px solid variables.$text-muted;
-        color: #fff;
+        padding: 10px;
+        background-color: #f2f0ef;
+        border: none;
+        color: variables.$text-main;
     }
 
     .register-input::placeholder {
-        color: variables.$text-main;
+        font-size: variables.$text2;
+        color: variables.$text-muted;
+        text-transform: variables.$uppercase;
     }
 
     .register-input:focus {
-        color: #fff;
-        outline: none;
+        outline: 1px solid variables.$primary;
     }
 
-    .register-form button {
-        width: 75%;
-        margin-top: 15px;
+    .register-button {
+        width: 85%;
+        font-size: 0.90rem;
+        padding: 10px;
+        margin-top: 1.5rem;
+        text-transform: variables.$uppercase;
         background-color: variables.$primary;
-        color: variables.$text-main;
+        color: variables.$background-white;
         border: none;
-        padding: 6px;
     }
 
     .login-text {
         text-align: center;
-        margin-top: 15px;
-    }
-
-    p + a {
-        display: block;
-        text-align: center;
-        text-decoration: underline;
-        color: variables.$background-dark;
-        margin-top: 2px;
+        margin-top: 1.5rem;
+        font-size: variables.$text2;
+        font-weight: variables.$font-bold;
+        color: variables.$text-muted;
+        
+        a {
+            margin-left: 0.25rem;
+            text-align: center;
+            text-decoration: underline;
+            color: variables.$text-main
+        }
     }
 }
