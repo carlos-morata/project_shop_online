@@ -6,7 +6,7 @@
     width: 100vw;
     box-sizing: variables.$border-box;
 
-    h1 {
+    .register-title {
         text-align: center;
         margin-bottom: 10px;
         color: variables.$text-muted;
@@ -14,7 +14,7 @@
         font-size: variables.$title1;
     }
 
-    form {
+    .register-form {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -22,15 +22,15 @@
         box-sizing: variables.$border-box;
     }
 
-    form label {
+    .register-label {
         margin-bottom: 2px;
     }
 
-    form label:not(form label:first-child) {
+    .register-label:not(form label:first-child) {
         margin-top: 10px;
     }
 
-    form input {
+    .register-input {
         width: 80%;
         padding: 4px;
         background-color: variables.$background-light;
@@ -38,16 +38,16 @@
         color: #fff;
     }
 
-    form input::placeholder {
+    .register-input::placeholder {
         color: variables.$text-main;
     }
 
-    form input:focus {
+    .register-input:focus {
         color: #fff;
         outline: none;
     }
 
-    form button {
+    .register-form button {
         width: 75%;
         margin-top: 15px;
         background-color: variables.$primary;
@@ -61,7 +61,7 @@
         margin-top: 15px;
     }
 
-    p  + a {
+    p + a {
         display: block;
         text-align: center;
         text-decoration: underline;

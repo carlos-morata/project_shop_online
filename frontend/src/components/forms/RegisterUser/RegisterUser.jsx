@@ -49,22 +49,22 @@ const RegisterUser = () => {
   }
 
   return <section className="register-container">
-    <h1>Regístrate</h1>
+    <h2 className="register-title">Crear Cuenta</h2>
 
     {error && <p>{error}</p>}
 
-    <form action="" onSubmit={handleSubmit}>
-      <label htmlFor="username">Nombre de Usuario</label>
-      <input type="text" name="username" id="username" placeholder="pepeMorales" required onChange={handleChange} />
+    <form className="register-form" action="" onSubmit={handleSubmit}>
+      <label className="register-label" htmlFor="username">Nombre de Usuario</label>
+      <input className="register-input" type="text" name="username" id="username" placeholder="pepeMorales" required onChange={handleChange} />
 
-      <label htmlFor="email">Correo Eléctronico</label>
-      <input type="email" name="email" id="email" placeholder="pepe@gmail.com" required onChange={handleChange} />
+      <label className="register-label" htmlFor="email">Correo Eléctronico</label>
+      <input className="register-input" type="email" name="email" id="email" placeholder="pepe@gmail.com" required onChange={handleChange} />
 
-      <label htmlFor="password">Contraseña</label>
-      <input type="password" name="password" placeholder="******" required onChange={handleChange} />
+      <label className="register-label" htmlFor="password">Contraseña</label>
+      <input className="register-input" type="password" name="password" placeholder="******" required onChange={handleChange} />
 
-      <label htmlFor="repitePassword">Repite la Contraseña</label>
-      <input type="password" name="repitePassword" placeholder="******" required onChange={handleChange} />
+      <label className="register-label" htmlFor="repitePassword">Repite la Contraseña</label>
+      <input className="register-input" type="password" name="repitePassword" placeholder="******" required onChange={handleChange} />
 
       <button type="submit">Regístrarme</button>
     </form>
