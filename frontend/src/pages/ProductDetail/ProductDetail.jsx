@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 const ProductDetail = () => {
   // const navigate = useNavigate();
@@ -57,19 +59,36 @@ const ProductDetail = () => {
   return (
   <>
     <section key={uuidv4()} className="productDetail-container">
-      <img src={product.url_image} alt={product.description} title={product.name} />
-      <h1>{product.name}</h1>
-      <p>{product.price} €</p>
+      <img className="product-image" src={product.url_image} alt={product.description} title={product.name} />
+      <h2 className="product-title">{product.name}</h2>
+      <p className="product-price">{product.price} €</p>
 
-      <select value={selectedSizes} onChange={handleSizeChange}>
-        <option value="" disabled> Elige tú Talla </option>
+      <h3 className="sizes-title">Talla</h3>
+      <select className="sizes-select" value={selectedSizes} onChange={handleSizeChange}>
+        {/* <option value="" disabled></option> */}
         {product.sizes.map((size) => (
-          <option key={uuidv4()} value={size}>{size}</option>
+          <option className="sizes-options" key={uuidv4()} value={size}>{size}</option>
         ))}
       </select> 
 
-      {/* <button className="add-btn" onClick={() => handleAddToCart(product)}>Añadir al Carrito</button> */}
-      <p>{product.description}</p>
+      <button className="add-btn">
+        Añadir a la Cesta <FontAwesomeIcon icon={faShoppingBag} />
+      </button>
+
+      <section className="product-info-section">
+      <details className="product-details">
+        <summary className="product-summary">
+          Descripción
+        </summary>
+        <p className="product-description">{product.description}</p>
+      </details>
+      <details className="product-details">
+        <summary className="product-summary">Envío y Devoluciones</summary>
+        <p className="product-description">
+          Entrega estándar en 2-4 días laborables. Las devoluciones son gratuitas y pueden realizarse en tienda o mediante recogida a domicilio en un plazo de 30 días.
+        </p>
+      </details>
+      </section>
     </section>
   </>
   );
