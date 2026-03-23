@@ -8,6 +8,19 @@
 --  	rol VARCHAR(50) NOT NULL DEFAULT 'user' CHECK (rol IN ('user', 'admin'))
 --  );
 
+-- TABLA CARRITO DE COMPRA
+-- CREATE TABLE cart (
+--     cart_id SERIAL PRIMARY KEY,
+--     user_id INT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+--     product_id INT NOT NULL REFERENCES products(product_id) ON DELETE CASCADE,
+--     size VARCHAR(10) NOT NULL,
+--     quantity INT NOT NULL DEFAULT 1 CHECK (quantity > 0),
+--     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    -- 🌟 REGLA DE ORO PRO: Evitar filas duplicadas
+--     UNIQUE (user_id, product_id, size)
+-- );
+
 -- TABLA PEDIDOS
 -- CREATE TABLE orders (
 -- 	order_id SERIAL PRIMARY KEY,
