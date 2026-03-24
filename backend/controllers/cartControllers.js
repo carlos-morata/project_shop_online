@@ -1,12 +1,13 @@
 const cartModels = require("../models/cartModels");
 
 const addProductToCart = async (req, res) => {
-    const { user_id, product_id, quantity, size} = req.body;
+    const { user_id } = req.user.user_id;
+    const { product_id, quantity, size} = req.body;
 
-    if(!user_id || !product_id || !size) {
+    if(!product_id || !size) {
         return res.status(400).json({ 
             success: false, 
-            message: "Faltan datos (usuario, producto o talla)." 
+            message: "Faltan datos (producto o talla)." 
         });
     };
 
