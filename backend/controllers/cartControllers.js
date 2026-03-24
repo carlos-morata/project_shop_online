@@ -11,12 +11,13 @@ const addProductToCart = async (req, res) => {
     };
 
     try {
-        const resultCart = await cartModels.addProductToCartModel(user_id, product_id, quantity, size);
+        const finalQuantity = quantity ? parseInt(quantity) : 1;
+        const resultCart = await cartModels.addProductToCartModel(user_id, product_id, finalQuantity, size);
 
         res.status(201).json({
-            succes: true,
+            success: true,
             message: "Producto añadido al carrito",
-            data: resultCart
+            data: resultCart[0]
         })
     } catch (error) {
         console.error(error);
