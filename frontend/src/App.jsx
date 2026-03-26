@@ -20,6 +20,7 @@ import AuthorPage from './pages/AuthorPage';
 import SearchPage from './pages/SearchPage'
 import NotFoundPage from './pages/NotFoundPage';
 import UserPage from './pages/UserPage';
+import ShoppingCartPage from './pages/ShoppingCartPage';
 
 import './styles/styles.scss'
 
@@ -49,6 +50,7 @@ function App() {
         </Route>
         <Route path='/:gender/:category/:product_id' element={<ProductDetail />}/> {/* mujer/abrigos/abrigo_1 */}
         <Route path='/buscar/:query' element={<SearchPage />} />
+        <Route path='/cart/:user_id' element={<ShoppingCartPage />}/> {/* Carrito de la compra */}
 
         {/* Rutas Para Manejar Fallos */}
         <Route path='/*' element={<NotFoundPage />}/> {/* NotFound */} 
