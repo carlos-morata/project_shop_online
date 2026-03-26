@@ -1,7 +1,7 @@
 const cartModels = require("../models/cartModels");
 
 const addProductToCart = async (req, res) => {
-    const { user_id } = req.user.user_id;
+    const user_id  = req.user.userId;
     const { product_id, quantity, size} = req.body;
 
     if(!product_id || !size) {
