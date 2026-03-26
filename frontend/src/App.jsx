@@ -42,6 +42,7 @@ function App() {
         <Route path='/inicioSesión' element={<LoginUser />}/> {/* Inicio Sesión de Usuario */}
         <Route path='/user' element={<UserPage />}/> {/* Panel de Usuario */}
         <Route path='/contacto' element={<ContactForm />}/> {/* Contacto */}
+        <Route path='/carrito' element={<ShoppingCartPage />}/> {/* Carrito de la compra */}
 
         {/* Rutas Dinámicas */}
         <Route path='/:gender' element={<CategoryLanding />}> {/* Mujer, Hombre, etc */}
@@ -50,7 +51,6 @@ function App() {
         </Route>
         <Route path='/:gender/:category/:product_id' element={<ProductDetail />}/> {/* mujer/abrigos/abrigo_1 */}
         <Route path='/buscar/:query' element={<SearchPage />} />
-        <Route path='/cart/:user_id' element={<ShoppingCartPage />}/> {/* Carrito de la compra */}
 
         {/* Rutas Para Manejar Fallos */}
         <Route path='/*' element={<NotFoundPage />}/> {/* NotFound */} 
