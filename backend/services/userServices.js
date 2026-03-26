@@ -31,7 +31,7 @@ const logInServices = async(email, password) => {
     }
 
     const token = jwt.sign(
-        { userId: loginUser.user_id, email: loginUser.email, rol: loginUser.rol }, process.env.JWT_SECRET, { expiresIn: '5m' })
+        { userId: loginUser.user_id, email: loginUser.email, rol: loginUser.rol }, process.env.JWT_SECRET, { expiresIn: '1h' })
 
     return { token, loginUser }
 }
