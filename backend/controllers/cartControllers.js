@@ -1,5 +1,6 @@
 const cartModels = require("../models/cartModels");
 
+// Añadir producto al carrito
 const addProductToCart = async (req, res) => {
     const user_id  = req.user.userId;
     const { product_id, quantity, size} = req.body;
@@ -26,6 +27,24 @@ const addProductToCart = async (req, res) => {
     }
 }
 
+// Leer productos del carrito
+const getProductsCart = async (req, res) => {
+    const user_id  = req.user.userId;
+
+    try {
+        const resultProductsCart = await cartModels.getProductsCartModel(user_id);
+
+        res.status(200).json({
+            success: true,
+            data: resultProductsCart
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: "Error interno del servidor" });
+    }
+}
+
 module.exports = {
-    addProductToCart
+    addProductToCart,
+    getProductsCart
 }

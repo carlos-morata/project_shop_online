@@ -12,10 +12,10 @@ const addProductToCartModel = async (user_id, product_id, quantity, size) => {
 }
 
 // Leer productos en el carrito
-const getProductsCart = async (user_id) => {
+const getProductsCartModel = async (user_id) => {
     try {
         const resultProductsCart = await pool.query(queries.getProductsCart, [ user_id ]);
-        return resultProductsCart.rows
+        return resultProductsCart.rows;
     } catch (error) {
         throw error;
     }
@@ -23,5 +23,5 @@ const getProductsCart = async (user_id) => {
 
 module.exports = {
     addProductToCartModel,
-    getProductsCart
+    getProductsCartModel
 }

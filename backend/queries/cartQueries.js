@@ -8,11 +8,11 @@ const queries = {
     
     getProductsCart:
     ` SELECT
-        c.quantity
-        c.size
-        p.product_id
-        p.name
-        p.price
+        c.quantity,
+        c.size,
+        p.product_id,
+        p.name,
+        p.price,
         p.url_image
      FROM cart c
      JOIN products p ON c.product_id = p.product_id
