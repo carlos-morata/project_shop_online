@@ -47,7 +47,7 @@ const ProductDetail = () => {
 
       <h3 className="sizes-title">Talla</h3>
       <select className="sizes-select" value={selectedSizes} onChange={handleSizeChange}>
-        <option value="" disabled></option>
+        <option value="" disabled>-- --</option>
         {product.sizes.map((size) => (
           <option className="sizes-options" key={uuidv4()} value={size}>{size}</option>
         ))}
