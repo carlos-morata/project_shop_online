@@ -21,7 +21,18 @@ const getProductsCartModel = async (user_id) => {
     }
 }
 
+// Incrementar o decrementar cantidad de producto en carrito
+const updateQuantityModel = async(user_id, product_id, size) => {
+    try {
+        const resultUpdateQuantity = await pool.query(queries.updateQuantity, [ user_id, product_id, size ]);
+        return resultUpdateQuantity.rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     addProductToCartModel,
-    getProductsCartModel
+    getProductsCartModel,
+    updateQuantityModel
 }
