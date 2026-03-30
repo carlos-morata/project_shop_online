@@ -16,7 +16,13 @@ const queries = {
         p.url_image
      FROM cart c
      JOIN products p ON c.product_id = p.product_id
-     WHERE c.user_id = $1; `
+     WHERE c.user_id = $1; `,
+    
+     updateQuantity:
+     ` UPDATE cart
+        SET quantity = $1
+        WHERE user_id =$2 AND product_id = $3 AND size = $4
+        RETURNING *;`
 }
 
 module.exports = queries;
