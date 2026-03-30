@@ -47,10 +47,10 @@ const getProductsCart = async (req, res) => {
 // - / + Cantidad del carrito
 const updateQuantity = async(req, res) => {
     const user_id = req.user.userId;
-    const { product_id, size } = req.body;
+    const { quantity, product_id, size } = req.body;
 
     try {
-        const resultUpdateQuantity = await cartModels.updateQuantityModel(user_id, product_id, size);
+        const resultUpdateQuantity = await cartModels.updateQuantityModel(quantity, user_id, product_id, size);
 
         res.status(200).json({
             success: true,
