@@ -67,6 +67,42 @@
         margin: 0.35rem 0rem;
     }
 
+    .specs-title {
+        font-size: 0.60rem;
+        text-transform: variables.$uppercase;
+        color: variables.$text-muted;
+        margin-top: 0.75rem;
+    }
+
+    .size-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        box-sizing: variables.$border-box;
+
+        .size-info {
+            font-size: 0.95rem;
+        }
+
+        .left-size-section {
+            display: flex;
+            align-items: center;
+            column-gap: 0.95rem;
+            padding: 2px 15px;
+            border: 1px solid variables.$text-muted;
+            border-radius: variables.$border-radius2;
+
+            .quantity-button {
+                background-color: transparent;
+                border: none;
+                padding: 3px;
+                color: variables.$text-muted;
+                font-weight: variables.$font-bold;
+            }
+        }
+    }
+
     .productCart-price {
         text-align: end;
         font-weight: variables.$font-bold;
