@@ -48,9 +48,11 @@ const ShoppingCartPage = () => {
             <img src={item.url_image} alt={item.name} className="productCart-image" />
             <h3 className="productCart-title">{item.name}</h3>
             <p>Talla: {item.size}</p>
+            <div className="quantity-container">
             <button onClick={() => updateQuantity(item.product_id, item.size, item.quantity, -1)}> - </button>
               <p>{item.quantity}</p>
             <button onClick={() => updateQuantity(item.product_id, item.size, item.quantity, 1)}> + </button>
+            </div>
             <p className="productCart-price">{item.price} €</p>          
         </article>
       ))
