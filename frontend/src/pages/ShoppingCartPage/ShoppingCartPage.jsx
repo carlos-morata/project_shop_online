@@ -45,17 +45,22 @@ const ShoppingCartPage = () => {
     { cart.length === 0 ? ( <p>Tú cesta está vacía.</p> ) : (
       cart.map((item, index) => (
         <article key={index} className="productCart-article">
+          
             <img src={item.url_image} alt={item.name} className="productCart-image" />
             <h3 className="productCart-title">{item.name}</h3>
-              <h4 className="specs-title">Especificaciones</h4>
+            <h4 className="specs-title">Especificaciones</h4>
+
             <section className="size-section">
               <p className="size-info">Talla: {item.size}</p>
+
               <div className="left-size-section">
                 <button onClick={() => updateQuantity(item.product_id, item.size, item.quantity, -1)} className="quantity-button"> - </button>
                   <p className="quantity-info">{item.quantity}</p>
                 <button onClick={() => updateQuantity(item.product_id, item.size, item.quantity, 1)} className="quantity-button"> + </button>
               </div>
+
             </section>
+
             <p className="productCart-price">{item.price} €</p>          
         </article>
       ))
