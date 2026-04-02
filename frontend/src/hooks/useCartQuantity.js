@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const useCartQuantity = () => {
+const useCartQuantity = (setCart) => {
 
     const updateQuantity = async (product_id, size, quantity, change) => {
 
@@ -10,17 +10,25 @@ const useCartQuantity = () => {
         // Bloquear cantidad en 1
         if(newQuantity < 1) return;
         
-        // Obtener token
-        const token = localStorage.getItem('token');
         try {
-            const response = await axios.put('http://localhost:3000/api/cart/update-quantity', {
-                quantity: newQuantity,
+            // Obtener token
+            const token = localStorage.getItem('token');
+
+            await axios.put('http://localhost:3000/api/cart/update-quantity', {
                 product_id: product_id,
-                size: size
+                size: size,
+                quantity: newQuantity
             }, { headers: { Authorization: `Bearer ${token}` } });
 
-            // Respuesta exitosa!
-            return response;
+            // Actualizamos el estado al instante
+            setCart(prevCart =>
+                prevCart.map(item => {
+                    if(item.product_id === product_id && item.size === size) {
+                        return { ...item, quantity: newQuantity }
+                    };
+                    return item;
+                })
+            );
 
         } catch (error) {
             console.error("Error al actualizar la cantidad:", error);

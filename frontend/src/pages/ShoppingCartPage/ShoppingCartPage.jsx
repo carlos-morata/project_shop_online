@@ -1,9 +1,12 @@
 import React, { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import useCartQuantity from "../../hooks/useCartQuantity";
 
 const ShoppingCartPage = () => {
   const [ cart, setCart ] = useState([]);
+
+  const { updateQuantity } = useCartQuantity(setCart);
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -45,7 +48,9 @@ const ShoppingCartPage = () => {
             <img src={item.url_image} alt={item.name} className="productCart-image" />
             <h3 className="productCart-title">{item.name}</h3>
             <p>Talla: {item.size}</p>
-            <p>{item.quantity}</p>
+            <button onClick={() => updateQuantity(item.product_id, item.size, item.quantity, -1)}> - </button>
+              <p>{item.quantity}</p>
+            <button onClick={() => updateQuantity(item.product_id, item.size, item.quantity, 1)}> + </button>
             <p className="productCart-price">{item.price} €</p>          
         </article>
       ))
