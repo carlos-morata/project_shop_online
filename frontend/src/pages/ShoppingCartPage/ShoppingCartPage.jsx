@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import useCartQuantity from "../../hooks/useCartQuantity";
+import CartSubtotal from "./CartSubtotal";
 
 const ShoppingCartPage = () => {
   const [ cart, setCart ] = useState([]);
@@ -65,6 +66,8 @@ const ShoppingCartPage = () => {
         </article>
       ))
     )}
+
+    <CartSubtotal cart={cart} />
   </section>;
 };
 
