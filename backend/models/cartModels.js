@@ -15,7 +15,7 @@ const addProductToCartModel = async (user_id, product_id, quantity, size) => {
 const getProductsCartModel = async (user_id) => {
     try {
         const resultProductsCart = await pool.query(queries.getProductsCart, [ user_id ]);
-        return { rows: resultProductsCart.rows, rowCount: resultProductsCart.rowCount };
+        return resultProductsCart.rows;
     } catch (error) {
         throw error;
     }
@@ -35,7 +35,7 @@ const updateQuantityModel = async(quantity, user_id, product_id, size) => {
 const deleteProductCartModel = async (cart_id) => {
     try {
         const resultDelete = await pool.query(queries.deleteProductCart, [ cart_id ])
-        return resultDelete.rows;
+        return { rows: resultDelete.rows, rowCount: resultDelete.rowCount };
     } catch (error) {
         throw error;
     }
