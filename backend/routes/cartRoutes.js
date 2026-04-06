@@ -9,7 +9,7 @@ router.get('/', verifyToken, cartControllers.getProductsCart);
 
 router.put('/update-quantity', verifyToken, cartControllers.updateQuantity);
 
-router.delete('/:cart_id', cartControllers.deleteProductCart);
+router.delete('/:cart_id', verifyToken, cartControllers.deleteProductCart);
 
 
 module.exports = router;
