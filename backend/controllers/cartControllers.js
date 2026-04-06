@@ -72,7 +72,7 @@ const deleteProductCart = async (req, res) => {
         res.status(204).send();
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: "Error interno del servidor" });
+        res.status(404).json({ success: false, message: "Item no existe" });
     }
 }
 
