@@ -1,0 +1,111 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+
+.cartSubtotal-container {
+    width: 92%;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    font-family: variables.$font-family;
+    box-sizing: variables.$border-box;
+    padding: 0.85rem;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    background-color: variables.$background-white;
+    border-radius: variables.$border-radius2;
+
+    .orderSummary-title {
+        font-size: variables.$title3;
+        margin-bottom: 1.2rem;
+    }
+
+    .subtotal-text {
+        position: relative;
+        margin-top: 0.85rem;
+        font-size: variables.$text2;
+        color: variables.$text-muted;
+    }
+
+    .subtotal-span {
+        position: absolute;
+        right: 0;
+        color: variables.$text-main;
+    }
+
+    .free-span {
+        color: #16a455;
+    }
+
+    .subtotal-line {
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .promoCode-title {
+        font-size: variables.$text2;
+        text-transform: variables.$uppercase;
+        color: variables.$text-muted;
+        font-weight: normal;
+        margin-bottom: 8px;
+    }
+
+    .promoCode-container {
+        display: flex;
+        column-gap: 8px;
+
+        .promoCode-input {
+            width: 70%;
+            padding: 8px 10px;
+            font-size: variables.$text2;
+            border-radius: variables.$border-radius2;
+            border: none;
+            background-color: #f8f6f6;
+        }
+
+        .promoCode-input:focus {
+            outline: 1px solid variables.$text-secondary;
+        }
+        
+        .promoCode-button {
+            padding: 5px 10px;
+            font-size: variables.$text2;
+            border-radius: variables.$border-radius2;
+            border: none;
+            background-color: #111827;
+            color: white;
+        }
+    }
+
+    .cartTotal-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .cartTotal-price {
+            font-size: variables.$title3;
+            color: variables.$primary;
+            font-weight: variables.$font-bold;
+        }
+
+        .includeIva-span {
+            display: block;
+            color: variables.$text-muted;
+            font-size: 0.75rem;
+            text-align: end;
+        }
+    }
+
+
+    .finalizePurchase-button {
+        padding: 12px 10px;
+        margin-top: 1.5rem;
+        border: none;
+        border-radius: variables.$border-radius;
+        background-color: variables.$primary;
+        color: variables.$background-white;
+        font-weight: variables.$font-bold;
+    }
+}

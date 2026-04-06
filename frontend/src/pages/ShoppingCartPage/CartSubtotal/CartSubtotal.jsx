@@ -16,20 +16,25 @@ const CartSubtotal = ( { cart } ) => {
       Subtotal <span className="subtotal-span">{subtotal.toFixed(2)} €</span>
     </p>
     <p className="subtotal-text">
-      Envío Estimado <span className="subtotal-span">Gratis</span>
+      Envío Estimado <span className="subtotal-span free-span">Gratis</span>
     </p>
-    <hr />
+    <hr className="subtotal-line" />
 
     <h3 className="promoCode-title">Código Promocional</h3>
-    <input className="promoCode-input" type="text" />
+    <div className="promoCode-container">
+    <input className="promoCode-input" type="text" placeholder="Código" />
     <button className="promoCode-button">Aplicar</button>
-    <hr />
+    </div>
+    <hr className="subtotal-line" />
 
-    <h4 className="cartTotal-title">Total</h4>
-    <p className="cartTotal-price">{subtotal.toFixed(2)}</p>
-    <span>Incluye IVA</span>
+    <section className="cartTotal-container">
+      <h4 className="cartTotal-title">Total</h4>
+      <p className="cartTotal-price">{subtotal.toFixed(2)} €
+        <span className="includeIva-span">Incluye IVA</span>
+      </p>
+    </section>
 
-    <button className="finalizePurchase-button">Finalizar Compra</button>
+    <button className="finalizePurchase-button">Finalizar Compra &#8594;</button>
 
   </article>;
 };
