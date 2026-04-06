@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import useCartQuantity from "../../hooks/useCartQuantity";
 import CartSubtotal from "./CartSubtotal";
+import FreeReturns from "../../components/common/FreeReturns";
 
 const ShoppingCartPage = () => {
   const [ cart, setCart ] = useState([]);
@@ -68,6 +69,7 @@ const ShoppingCartPage = () => {
     )}
 
     <CartSubtotal cart={cart} />
+    <FreeReturns />
   </section>;
 };
 
