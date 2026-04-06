@@ -31,8 +31,19 @@ const updateQuantityModel = async(quantity, user_id, product_id, size) => {
     }
 }
 
+// Eliminar producto del carrito
+const deleteProductCartModel = async (cart_id) => {
+    try {
+        const resultDelete = await pool.query(queries.deleteProductCart, [ cart_id ])
+        return resultDelete.rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     addProductToCartModel,
     getProductsCartModel,
-    updateQuantityModel
+    updateQuantityModel,
+    deleteProductCartModel
 }
