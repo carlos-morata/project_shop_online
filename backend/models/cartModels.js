@@ -15,7 +15,7 @@ const addProductToCartModel = async (user_id, product_id, quantity, size) => {
 const getProductsCartModel = async (user_id) => {
     try {
         const resultProductsCart = await pool.query(queries.getProductsCart, [ user_id ]);
-        return resultProductsCart.rows;
+        return { rows: resultProductsCart.rows, rowCount: resultProductsCart.rowCount };
     } catch (error) {
         throw error;
     }
