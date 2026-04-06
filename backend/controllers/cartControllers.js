@@ -1,4 +1,5 @@
 const cartModels = require("../models/cartModels");
+const cartServices = require("../services/cartServices");
 
 // Añadir producto al carrito
 const addProductToCart = async (req, res) => {
@@ -62,8 +63,22 @@ const updateQuantity = async(req, res) => {
     }
 }
 
+// Borrar producto del carrito
+const deleteProductCart = async (req, res) => {
+    const { cart_id } = req.params;
+
+    try {
+        await cartServices.deleteProductCartServices(cart_id);
+        res.status(204).send();
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: "Error interno del servidor" });
+    }
+}
+
 module.exports = {
     addProductToCart,
     getProductsCart,
-    updateQuantity
+    updateQuantity,
+    deleteProductCart
 }
