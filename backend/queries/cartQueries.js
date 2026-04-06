@@ -18,11 +18,15 @@ const queries = {
      JOIN products p ON c.product_id = p.product_id
      WHERE c.user_id = $1; `,
     
-     updateQuantity:
+    updateQuantity:
      ` UPDATE cart
         SET quantity = $1
         WHERE user_id =$2 AND product_id = $3 AND size = $4
-        RETURNING *;`
+        RETURNING *;`,
+    
+    deleteProductCart:
+     ` DELETE FROM cart
+        WHERE cart_id = $1`
 }
 
 module.exports = queries;
