@@ -60,31 +60,28 @@
         border-radius: variables.$border-radius2;
     }
 
-    .title-section {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 0.35em;
-
         .productCart-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.35em;
             font-size: 1.3em;
             color: #000;
-        }
-
-        .delete-button {
-            border: none;
-            background-color: transparent;
-            color: variables.$text-muted;
-
-            .lucide-trash-2 {
-                width: 1.1em;
+                
+            .delete-button {
+                border: none;
+                background-color: transparent;
+                color: variables.$text-muted;
+    
+                .lucide-trash-2 {
+                    width: 0.95em;
+                }
+    
+                .lucide-trash-2:hover {
+                    color: variables.$primary;
+                }
             }
-
-            .lucide-trash-2:hover {
-                color: variables.$primary;
-            }
         }
-    }
 
 
     .specs-title {

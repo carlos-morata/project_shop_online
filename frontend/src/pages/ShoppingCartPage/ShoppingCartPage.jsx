@@ -52,10 +52,10 @@ const ShoppingCartPage = () => {
         <article key={index} className="productCart-article">
           
             <img src={item.url_image} alt={item.name} className="productCart-image" />
-            <div className="title-section">
-              <h3 className="productCart-title">{item.name}</h3>
+              <h3 className="productCart-title">
+                {item.name}
               <DeleteProduct cart_id={item.cart_id} handleDeleteProduct={handleDeleteProduct}/>
-            </div>
+              </h3>
             <h4 className="specs-title">Especificaciones</h4>
 
             <section className="size-section">
