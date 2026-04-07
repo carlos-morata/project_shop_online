@@ -4,6 +4,7 @@ import axios from 'axios';
 import useCartQuantity from "../../hooks/useCartQuantity";
 import CartSubtotal from "./CartSubtotal";
 import FreeReturns from "../../components/common/FreeReturns";
+import DeleteProduct  from "./DeleteProduct";
 
 const ShoppingCartPage = () => {
   const [ cart, setCart ] = useState([]);
@@ -24,16 +25,18 @@ const ShoppingCartPage = () => {
           { headers: { Authorization: `Bearer ${token}` } });
 
         setCart(response.data.data);
-        
       } catch (error) {
         console.log(error);
       }
     }
     fetchCart();
   }, []);
-
+  
   const totalProductsCart = cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
 
+  const handleDeleteProduct = ( cart_id ) => {
+    setCart( cart.filter(item => item.cart_id !== cart_id ))
+  }
 
   return <section className="shoppingCart-container">
     <div className="shoppingCart-top">
@@ -49,7 +52,10 @@ const ShoppingCartPage = () => {
         <article key={index} className="productCart-article">
           
             <img src={item.url_image} alt={item.name} className="productCart-image" />
-            <h3 className="productCart-title">{item.name}</h3>
+            <div className="title-section">
+              <h3 className="productCart-title">{item.name}</h3>
+              <DeleteProduct cart_id={item.cart_id} handleDeleteProduct={handleDeleteProduct}/>
+            </div>
             <h4 className="specs-title">Especificaciones</h4>
 
             <section className="size-section">
