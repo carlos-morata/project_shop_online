@@ -8,6 +8,7 @@ const queries = {
     
     getProductsCart:
     ` SELECT
+        c.cart_id,
         c.quantity,
         c.size,
         p.product_id,
