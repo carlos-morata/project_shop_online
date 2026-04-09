@@ -22,14 +22,13 @@
 -- );
 
 -- TABLA PEDIDOS
--- CREATE TABLE orders (
--- 	order_id SERIAL PRIMARY KEY,
--- 	user_id INT,
--- 	total_price INT NOT NULL DEFAULT 0,
--- 	state VARCHAR(20) NOT NULL DEFAULT 'pending' 
--- 			CHECK (state IN ('pending', 'in process', 'sent', 'delivered', 'canceled')),
--- 	FOREIGN KEY(user_id) REFERENCES users(user_id)
--- );
+-- CREATE TABLE orders (      
+--   order_id SERIAL PRIMARY KEY,   
+--   user_id INT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,   
+--   discount_id INT REFERENCES discounts(discount_id) ON DELETE CASCADE,           
+--   total_price DECIMAL(10, 2) NOT NULL,   
+--   state VARCHAR(200) NOT NULL DEFAULT 'pending' CHECK (state IN ('pending', 'in process', 'sent', 'delivered', 'canceled', 'returned', 'payment_failed'))  
+--  );
 
 -- CREATE TYPE gender_type AS ENUM ('hombre', 'mujer');
 -- TABLA PRODUCTOS
