@@ -75,5 +75,6 @@ App.jsx
         npx crcf src/pages/HomePage CategoryLanding CategoryProduct ProductDetail LegalPage AuthorPage NotFoundPage -j --notest -f
         npx crcf src/pages/AllProducts -j --notest -f
         npx crcf src/pages/UserPage -j --notest -f
+        npx crcf src/pages/ShoppingCartPage -j --notest -f
 
 -- styles/

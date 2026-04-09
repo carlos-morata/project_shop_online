@@ -4,6 +4,7 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import useCart from '../../hooks/useCart';
 
 const ProductDetail = () => {
   // const navigate = useNavigate();
@@ -12,30 +13,7 @@ const ProductDetail = () => {
 
   const [selectedSizes, setSelectedSizes] = useState("");
 
-  // const handleAddToCart = async (item) => {
-  //   const token = localStorage.getItem('token');
-
-  //   if (!token) {
-  //     alert("Para añadir productos, necesitas iniciar sesión.");
-  //     navigate('/registro');
-  //     return;
-  //   };
-
-  //   try {
-  //     const response = await axios.post('http://localhost:3000/add', {
-  //       user_id: item.user_id,
-  //       product_id: item.product_id,
-  //       quantity: 1,
-  //       size: selectedSizes
-  //     }, {
-  //       headers: { Authorization: `Bearer ${token}` }
-  //     })
-  //     selectedSizes(response.data);
-  //     alert("¡Producto añadido al carrito correctamente!s");
-  //   }catch (error) {
-  //     console.error(error);
-  //   }
-  //   }
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchProductId = async () => {
@@ -54,6 +32,10 @@ const ProductDetail = () => {
     setSelectedSizes(e.target.value);
   }
 
+  const handleBtnClick = () => {
+    addToCart(product.product_id, 1, selectedSizes);
+  }
+
   if (!product) return <p>Cargando detalle de producto...</p>;
 
   return (
@@ -65,13 +47,13 @@ const ProductDetail = () => {
 
       <h3 className="sizes-title">Talla</h3>
       <select className="sizes-select" value={selectedSizes} onChange={handleSizeChange}>
-        {/* <option value="" disabled></option> */}
+        <option value="" disabled>-- --</option>
         {product.sizes.map((size) => (
           <option className="sizes-options" key={uuidv4()} value={size}>{size}</option>
         ))}
       </select> 
 
-      <button className="add-btn">
+      <button className="add-btn" onClick={handleBtnClick}>
         Añadir a la Cesta <FontAwesomeIcon icon={faShoppingBag} />
       </button>
 

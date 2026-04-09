@@ -8,15 +8,27 @@
 --  	rol VARCHAR(50) NOT NULL DEFAULT 'user' CHECK (rol IN ('user', 'admin'))
 --  );
 
--- TABLA PEDIDOS
--- CREATE TABLE orders (
--- 	order_id SERIAL PRIMARY KEY,
--- 	user_id INT,
--- 	total_price INT NOT NULL DEFAULT 0,
--- 	state VARCHAR(20) NOT NULL DEFAULT 'pending' 
--- 			CHECK (state IN ('pending', 'in process', 'sent', 'delivered', 'canceled')),
--- 	FOREIGN KEY(user_id) REFERENCES users(user_id)
+-- TABLA CARRITO DE COMPRA
+-- CREATE TABLE cart (
+--     cart_id SERIAL PRIMARY KEY,
+--     user_id INT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+--     product_id INT NOT NULL REFERENCES products(product_id) ON DELETE CASCADE,
+--     size VARCHAR(10) NOT NULL,
+--     quantity INT NOT NULL DEFAULT 1 CHECK (quantity > 0),
+--     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    -- 🌟 REGLA DE ORO PRO: Evitar filas duplicadas
+--     UNIQUE (user_id, product_id, size)
 -- );
+
+-- TABLA PEDIDOS
+-- CREATE TABLE orders (      
+--   order_id SERIAL PRIMARY KEY,   
+--   user_id INT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,   
+--   discount_id INT REFERENCES discounts(discount_id) ON DELETE CASCADE,           
+--   total_price DECIMAL(10, 2) NOT NULL,   
+--   state VARCHAR(200) NOT NULL DEFAULT 'pending' CHECK (state IN ('pending', 'in process', 'sent', 'delivered', 'canceled', 'returned', 'payment_failed'))  
+--  );
 
 -- CREATE TYPE gender_type AS ENUM ('hombre', 'mujer');
 -- TABLA PRODUCTOS
@@ -37,14 +49,21 @@
 -- ON products (LOWER(gender), LOWER(category));
 
 -- TABLA
--- CREATE TABLE orders_items (
--- 	order_items SERIAL PRIMARY KEY,
--- 	order_id INT,
--- 	product_id INT,
--- 	quantity INT NOT NULL CHECK (quantity > 0),
--- 	total_price DECIMAL(10, 2) NOT NULL,
--- 	subtotal DECIMAL(10, 2) 
--- 		GENERATED ALWAYS AS (quantity * total_price) STORED,
--- 	FOREIGN KEY(order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
--- 	FOREIGN KEY(product_id) REFERENCES products(product_id)
--- )
+-- CREATE TABLE order_items (
+--   order_item_id SERIAL PRIMARY KEY,
+--   order_id INT NOT NULL REFERENCES orders(order_id) ON DELETE CASCADE,
+--   product_id INT NOT NULL REFERENCES products(product_id) ON DELETE CASCADE,
+--   quantity INT NOT NULL DEFAULT 1 CHECK (quantity > 0),
+--   price DECIMAL(10, 2) NOT NULL
+--   );
+
+-- TABLA DISCOUNTS
+-- CREATE TABLE discounts (      
+--   discount_id SERIAL PRIMARY KEY,     
+--   name VARCHAR(150),     
+--   value DECIMAL NOT NULL,     
+--   type VARCHAR(15) NOT NULL CHECK (type IN (' percentage ', ' fixed ')),     
+--   min_purchase DECIMAL(10, 2),     
+--   expiration_date TIMESTAMP NOT NULL CHECK (expiration_date > CURRENT_TIMESTAMP), 
+--   active BOOLEAN NOT NULL  
+-- );

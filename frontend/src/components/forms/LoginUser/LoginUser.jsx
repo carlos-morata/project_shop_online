@@ -34,7 +34,7 @@ const LoginUser = () => {
         password: formValue.password
       });
 
-      localStorage.setItem('token', response.data.user);
+      localStorage.setItem('token', response.data.user.token);
       window.location.href = '/';
 
       setFormValue(response.data);

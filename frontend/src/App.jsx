@@ -20,6 +20,7 @@ import AuthorPage from './pages/AuthorPage';
 import SearchPage from './pages/SearchPage'
 import NotFoundPage from './pages/NotFoundPage';
 import UserPage from './pages/UserPage';
+import ShoppingCartPage from './pages/ShoppingCartPage';
 
 import './styles/styles.scss'
 
@@ -41,6 +42,7 @@ function App() {
         <Route path='/inicioSesión' element={<LoginUser />}/> {/* Inicio Sesión de Usuario */}
         <Route path='/user' element={<UserPage />}/> {/* Panel de Usuario */}
         <Route path='/contacto' element={<ContactForm />}/> {/* Contacto */}
+        <Route path='/carrito' element={<ShoppingCartPage />}/> {/* Carrito de la compra */}
 
         {/* Rutas Dinámicas */}
         <Route path='/:gender' element={<CategoryLanding />}> {/* Mujer, Hombre, etc */}

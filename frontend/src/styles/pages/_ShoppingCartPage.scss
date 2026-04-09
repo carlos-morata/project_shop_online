@@ -1,0 +1,136 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.shoppingCart-container {
+    width: 100vw;
+    background-color: #f8f6f6;
+    box-sizing: variables.$border-box;
+    padding: 0.25rem 0 4.5rem 0;
+
+    .shoppingCart-top {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1.5rem;
+        font-family: variables.$font-family;
+
+        .title-cart {
+            margin-left: 8px;
+            font-size: variables.$title2;
+        }
+    
+        .shopping-link {
+            margin-right: 8px;
+            font-size: variables.$text2;
+            text-decoration: none;
+            color: variables.$primary;
+        }
+    }
+
+
+    .articleCart-text {
+        margin: 5px 0px 0px 8px;
+        color: variables.$text-secondary;
+    }
+
+    hr {
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+.productCart-article {
+    width: 92%;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    box-sizing: variables.$border-box;
+    background-color: variables.$background-white;
+    margin: 0 auto;
+    border-radius: variables.$border-radius2;
+    padding: 0.85rem 0;
+
+    .productCart-image {
+        width: 92%;
+        height: 48dvh;
+        object-fit: cover;
+        border-radius: variables.$border-radius2;
+    }
+
+        .productCart-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.35em;
+            font-size: 1.3em;
+            color: #000;
+                
+            .delete-button {
+                border: none;
+                background-color: transparent;
+                color: variables.$text-muted;
+    
+                .lucide-trash-2 {
+                    width: 0.95em;
+                }
+    
+                .lucide-trash-2:hover {
+                    color: variables.$primary;
+                }
+            }
+        }
+
+
+    .specs-title {
+        font-size: 0.60rem;
+        text-transform: variables.$uppercase;
+        color: variables.$text-muted;
+        margin-top: 1.2rem;
+    }
+
+    .size-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.75rem;
+        box-sizing: variables.$border-box;
+
+        .size-info {
+            font-size: 0.95rem;
+        }
+
+        .left-size-section {
+            display: flex;
+            align-items: center;
+            column-gap: 0.95rem;
+            padding: 2px 15px;
+            border: 1px solid variables.$text-muted;
+            border-radius: variables.$border-radius2;
+
+            .quantity-button {
+                background-color: transparent;
+                border: none;
+                padding: 3px;
+                color: variables.$text-muted;
+                font-weight: variables.$font-bold;
+            }
+        }
+    }
+
+    .productCart-price {
+        text-align: end;
+        font-weight: variables.$font-bold;
+        font-size: variables.$text;
+    }
+}
+
+.productCart-article:not(.productCart-article:first-child) {
+    margin-top: 1.2rem;
+}
+
+.productCart-article:hover {
+    box-shadow: 0px 0px 8px 2px variables.$background-dark;
+}
