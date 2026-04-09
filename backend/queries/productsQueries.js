@@ -42,6 +42,12 @@ const queries = {
     searchProducts:
         ` SELECT * FROM products
             WHERE name ILIKE '%' || $1 || '%';`,
+
+    // Actualizar stock de productos
+    updateProductStock:
+        ` UPDATE products
+            SET stock = stock - $1
+            WHERE product_id = $2`,
 }
 
 module.exports = queries;
