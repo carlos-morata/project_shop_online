@@ -61,3 +61,14 @@
 -- 	FOREIGN KEY(order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
 -- 	FOREIGN KEY(product_id) REFERENCES products(product_id)
 -- )
+
+-- TABLA DISCOUNTS
+-- CREATE TABLE discounts (      
+--   discount_id SERIAL PRIMARY KEY,     
+--   name VARCHAR(150),     
+--   value DECIMAL NOT NULL,     
+--   type VARCHAR(15) NOT NULL CHECK (type IN (' percentage ', ' fixed ')),     
+--   min_purchase DECIMAL(10, 2),     
+--   expiration_date TIMESTAMP NOT NULL CHECK (expiration_date > CURRENT_TIMESTAMP), 
+--   active BOOLEAN NOT NULL  
+-- );
