@@ -49,17 +49,13 @@
 -- ON products (LOWER(gender), LOWER(category));
 
 -- TABLA
--- CREATE TABLE orders_items (
--- 	order_items SERIAL PRIMARY KEY,
--- 	order_id INT,
--- 	product_id INT,
--- 	quantity INT NOT NULL CHECK (quantity > 0),
--- 	total_price DECIMAL(10, 2) NOT NULL,
--- 	subtotal DECIMAL(10, 2) 
--- 		GENERATED ALWAYS AS (quantity * total_price) STORED,
--- 	FOREIGN KEY(order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
--- 	FOREIGN KEY(product_id) REFERENCES products(product_id)
--- )
+-- CREATE TABLE order_items (
+--   order_item_id SERIAL PRIMARY KEY,
+--   order_id INT NOT NULL REFERENCES orders(order_id) ON DELETE CASCADE,
+--   product_id INT NOT NULL REFERENCES products(product_id) ON DELETE CASCADE,
+--   quantity INT NOT NULL DEFAULT 1 CHECK (quantity > 0),
+--   price DECIMAL(10, 2) NOT NULL
+--   );
 
 -- TABLA DISCOUNTS
 -- CREATE TABLE discounts (      
