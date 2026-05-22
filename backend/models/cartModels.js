@@ -41,9 +41,16 @@ const deleteProductCartModel = async (cart_id) => {
     }
 }
 
+// Vaciar carrito de usuario al hacer pedido
+const emptyUserCartModel = async (client, user_id) => {
+    const resultEmpty = await client.query(queries.emptyUserCart, [ user_id ]);
+    return resultEmpty.rows[0];
+}
+
 module.exports = {
     addProductToCartModel,
     getProductsCartModel,
     updateQuantityModel,
-    deleteProductCartModel
+    deleteProductCartModel,
+    emptyUserCartModel
 }
