@@ -65,10 +65,16 @@ const searchProductsModel = async (query) => {
     }
 }
 
+const updateProductStockModel = async (client, stock, product_id) => {
+        const resultUpdateStock = await client.query(queries.updateProductStock, [stock, product_id]);
+        return resultUpdateStock.rows[0];
+}
+
 module.exports = {
     createProductModel,
     deleteProductModel,
     getProductsModel,
     getProductByIdModel,
     searchProductsModel,
+    updateProductStockModel
 }
