@@ -20,6 +20,10 @@ app.use('/api/products', productRoutes);
 const cartRoutes = require('./routes/cartRoutes');
 app.use('/api/cart', cartRoutes);
 
+// Importar Rutas de Pedidos
+const orderRoutes = require('./routes/ordersRoutes');
+app.use('/api/order', orderRoutes);
+
 app.listen(port, () => {
   console.log(`Servidor backend -> http://localhost:${port}`)
 })
