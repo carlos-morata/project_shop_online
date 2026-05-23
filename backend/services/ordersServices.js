@@ -20,7 +20,7 @@ const addOrdersService = async (user_id, total_price, cartItems) => {
             const resultItemOrder = await ordersModels.addOrderItemsModel(client, order_id, items.product_id, items.quantity, items.price);
 
             // Actualizar stock
-            const resultUpdateStock = await productModels.updateProductStockModel(client, items.quantity, items.product_id),
+            const resultUpdateStock = await productModels.updateProductStockModel(client, items.quantity, items.product_id);
         }
 
         // Vaciar carrito del usuario
