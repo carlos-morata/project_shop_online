@@ -13,7 +13,14 @@ const addOrderItemsModel = async (client, order_id, product_id, quantity, price)
         return resultAddItems.rows[0];
 }
 
+// Ver pedidos usuario
+const getUserOrdersModel = async(user_id) => {
+        const resultGetOrders = await pool.query(queries.getUserOrders, [ user_id ]);
+        return resultGetOrders.rows;
+}
+
 module.exports = {
     addOrderModel,
-    addOrderItemsModel
+    addOrderItemsModel,
+    getUserOrdersModel
 }

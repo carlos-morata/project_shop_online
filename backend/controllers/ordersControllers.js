@@ -1,4 +1,5 @@
 const ordersModels = require("../models/ordersModels");
+const { getUserOrders } = require("../queries/ordersQueries");
 const ordersServices = require("../services/ordersServices");
 
 // Crear pedido
@@ -19,6 +20,24 @@ const addOrder = async (req, res) => {
     }
 }
 
+// Ver pedidos
+const viewUserOrders = async (req, res) => {
+    const user_id = req.user.userId;
+
+    try {
+        const resultViewOrders = await ordersServices.getUserOrdersServices(user_id);
+
+        res.status(200).json({
+            success: true,
+            data: resultViewOrders
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: "Error interno del servidor" });
+    }
+}
+
 module.exports = {
     addOrder,
+    viewUserOrders
 }

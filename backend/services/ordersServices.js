@@ -37,6 +37,17 @@ const addOrdersService = async (user_id, total_price, cartItems) => {
     }
 }
 
+// Ver pedidos
+const getUserOrdersServices = async(user_id) => {
+    try {
+        const resultGetOrder = await ordersModels.getUserOrdersModel(user_id);
+        return resultGetOrder;
+    } catch(error) {
+        throw error;
+    } 
+}
+
 module.exports = {
     addOrdersService,
+    getUserOrdersServices
 }
