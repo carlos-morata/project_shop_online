@@ -21,6 +21,8 @@ import SearchPage from './pages/SearchPage'
 import NotFoundPage from './pages/NotFoundPage';
 import UserPage from './pages/UserPage';
 import ShoppingCartPage from './pages/ShoppingCartPage';
+import OrdersPage from './pages/OrdersPage';
+import OrderDetailPage from './pages/OrderDetailPage';
 
 import './styles/styles.scss'
 
@@ -43,6 +45,7 @@ function App() {
         <Route path='/user' element={<UserPage />}/> {/* Panel de Usuario */}
         <Route path='/contacto' element={<ContactForm />}/> {/* Contacto */}
         <Route path='/carrito' element={<ShoppingCartPage />}/> {/* Carrito de la compra */}
+        <Route path='/pedidos' element={<OrdersPage />} /> {/* Pedidos */}
 
         {/* Rutas Dinámicas */}
         <Route path='/:gender' element={<CategoryLanding />}> {/* Mujer, Hombre, etc */}
@@ -51,6 +54,7 @@ function App() {
         </Route>
         <Route path='/:gender/:category/:product_id' element={<ProductDetail />}/> {/* mujer/abrigos/abrigo_1 */}
         <Route path='/buscar/:query' element={<SearchPage />} />
+        <Route path='/pedidos/:order_id' element={<OrderDetailPage />} /> {/* pedidos/pedido_1 */}
 
         {/* Rutas Para Manejar Fallos */}
         <Route path='/*' element={<NotFoundPage />}/> {/* NotFound */} 
