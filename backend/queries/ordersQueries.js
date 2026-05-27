@@ -14,19 +14,21 @@ const queries = {
     // Mostrar pedidos de usuario
     getUserOrders:
     ` SELECT 
+        o.order_id,
         o.total_price,
         o.state,
         o.created_date,
-        i.product_id,
-        p.name,
-        p.url_image,
-        d.discount_id
+        JSON_AGG(JSON_BUILD_OBJECT(
+            'product_id', i.product_id,
+            'name', p.name,
+            'url_image', p.url_image
+            )) AS products
       FROM orders o
       JOIN order_items i ON o.order_id = i.order_id
       JOIN products p ON i.product_id = p.product_id
       LEFT JOIN discounts d ON o.discount_id = d.discount_id
-      WHERE o.user_id = $1;
-    `
+      WHERE o.user_id = $1
+      GROUP BY o.order_id;`,
 }
 
 module.exports = queries;
