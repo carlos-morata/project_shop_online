@@ -1,0 +1,60 @@
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from 'axios';
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+
+const OrdersPage = () => {
+
+  const [ order, setOrder ] = useState([]);
+
+  useEffect(() => {
+    const fetchOrder = async () => {
+      try {
+        const token = localStorage.getItem('token');
+
+        if(!token) {
+          alert("Para ver tus pedidos, necesistar iniciar sesión.");
+          return;
+        }
+
+        const response = await axios.get(`${VITE_API_URL}/api/order/`, 
+          { headers: { Authorization: `Bearer ${token}` } });
+
+          setOrder(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchOrder();
+  }, []);
+
+  return <section className="orders-container">
+    <h2 className="title-myOrders">Mis Pedidos</h2>
+    <p>Gestiona y revisa el estado de tus compras.</p>
+    <section className="order-stateFilter-container">
+      <button className="order-stateFilter-button">Todos</button>
+      <button className="order-stateFilter-button">En camino</button>
+      <button className="order-stateFilter-button">Entregado</button>
+      <button className="order-stateFilter-button">Cancelado</button>
+    </section>
+
+    <section className="all-userOrders-container">
+    { order.length === 0 ? ( <p>Todavía no tienes pedidos.</p> ) : (
+      order.map((item, index) => (
+        <article key={index} className="order-article">
+          <h3 className="title-order">Pedido #{item.order_id}</h3>
+          <span className="order-state-text">{item.state}</span>
+          { item.products.slice(0, 3).map(product => <img key={index} src={product.url_image} />) }
+          { item.products.length > 3 && <span>+{item.products.length -3}</span> }
+          <p className="order-date-text">{item.created_date}</p>
+          <p className="order-totalPrice-text">Total: {item.total_price}</p>
+          <Link className="order-details-link" to={`/pedidos/${item.order_id}`}>Ver Detalles</Link>
+        </article>
+      ))
+    )}
+    </section>
+
+  </section>;
+};
+
+export default OrdersPage;
