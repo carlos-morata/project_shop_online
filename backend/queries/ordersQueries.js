@@ -28,8 +28,7 @@ const queries = {
       JOIN products p ON i.product_id = p.product_id
       LEFT JOIN discounts d ON o.discount_id = d.discount_id
       WHERE o.user_id = $1
-      GROUP BY o.order_id;
-    `
+      GROUP BY o.order_id;`,
 }
 
 module.exports = queries;
