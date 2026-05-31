@@ -19,8 +19,15 @@ const getUserOrdersModel = async(user_id) => {
         return resultGetOrders.rows;
 }
 
+// Ver pedido específico por id
+const getUserOrderIdModel = async(user_id, order_id) => {
+        const resultGetOrderId = await pool.query(queries.getUserOrderId, [ user_id, order_id ]);
+        return resultGetOrderId.rows;
+}
+
 module.exports = {
     addOrderModel,
     addOrderItemsModel,
-    getUserOrdersModel
+    getUserOrdersModel,
+    getUserOrderIdModel
 }

@@ -47,7 +47,18 @@ const getUserOrdersServices = async(user_id) => {
     } 
 }
 
+// Ver pedido por id
+const getUserOrderidServices = async(user_id, order_id) => {
+    try {
+        const resultGetOrderId = await ordersModels.getUserOrderIdModel(user_id, order_id);
+        return resultGetOrderId;
+    } catch(error) {
+        throw error;
+    } 
+}
+
 module.exports = {
     addOrdersService,
-    getUserOrdersServices
+    getUserOrdersServices,
+    getUserOrderidServices
 }
