@@ -8,8 +8,8 @@ const addOrderModel = async (client, user_id, total_price, state) => {
 }
 
 // Añadir Items al pedido
-const addOrderItemsModel = async (client, order_id, product_id, quantity, price) => {
-        const resultAddItems = await client.query(queries.addOrderItems, [ order_id, product_id, quantity, price ]);
+const addOrderItemsModel = async (client, order_id, product_id, quantity, price, size) => {
+        const resultAddItems = await client.query(queries.addOrderItems, [ order_id, product_id, quantity, price, size ]);
         return resultAddItems.rows[0];
 }
 
