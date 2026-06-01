@@ -46,8 +46,14 @@ const OrdersPage = () => {
           <span className="order-state-text">{item.state}</span>
           { item.products.slice(0, 3).map(product => <img key={index} src={product.url_image} />) }
           { item.products.length > 3 && <span>+{item.products.length -3}</span> }
-          <p className="order-date-text">{item.created_date}</p>
-          <p className="order-totalPrice-text">Total: {item.total_price}</p>
+          <p className="order-date-text">
+            { order[0]?.created_date && new Date(order[0].created_date).toLocaleDateString('es-ES', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric' 
+          }) }
+        </p>
+          <p className="order-totalPrice-text">Total: {item.total_price}€</p>
           <Link className="order-details-link" to={`/pedidos/${item.order_id}`}>Ver Detalles</Link>
         </article>
       ))
