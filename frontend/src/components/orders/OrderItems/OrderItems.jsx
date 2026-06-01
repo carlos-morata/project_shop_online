@@ -8,7 +8,7 @@ const OrderItems = ({ products }) => {
         <article key={index}>
           <img src={item.url_image} alt={item.name} />
           <h4>{item.name}</h4>
-          <p>{item.size}</p>
+          <p>Talla: {item.size}</p>
           <p>Cantidad: {item.quantity}</p>
           <p>{item.price}€</p>
         </article>

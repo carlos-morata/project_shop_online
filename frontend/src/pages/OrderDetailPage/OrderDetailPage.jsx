@@ -33,13 +33,13 @@ const OrderDetailPage = () => {
 
   return <section>
     <h3>Pedido #{order_id}</h3>
-    {/* <p>
+    <p>
       { orderDetail[0]?.created_date && new Date(orderDetail[0].created_date).toLocaleDateString('es-ES', {
         day: 'numeric',
         month: 'long',
         year: 'numeric' 
       }) }
-    </p> */}
+    </p>
     <OrderTracking state={orderDetail[0]?.state}/>
     <OrderItems products={orderDetail[0]?.products}/>
     <Orderinfo />
