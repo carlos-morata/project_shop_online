@@ -35,6 +35,7 @@ const queries = {
     ` SELECT
         o.state,
         o.total_price,
+        o.created_date,
         JSON_AGG(JSON_BUILD_OBJECT(
             'product_id', i.product_id,
             'name', p.name,
