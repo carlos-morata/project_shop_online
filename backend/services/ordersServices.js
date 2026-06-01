@@ -17,7 +17,7 @@ const addOrdersService = async (user_id, total_price, cartItems) => {
         // Por cada producto del carrito
         for(const items of cartItems) {
             // Insertar en order_items
-            const resultItemOrder = await ordersModels.addOrderItemsModel(client, order_id, items.product_id, items.quantity, items.price);
+            const resultItemOrder = await ordersModels.addOrderItemsModel(client, order_id, items.product_id, items.quantity, items.price, items.size);
 
             // Actualizar stock
             const resultUpdateStock = await productModels.updateProductStockModel(client, items.quantity, items.product_id);
