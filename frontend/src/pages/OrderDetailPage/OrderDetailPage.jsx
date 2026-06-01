@@ -40,6 +40,7 @@ const OrderDetailPage = () => {
         year: 'numeric' 
       }) }
     </p> */}
+    <OrderTracking state={orderDetail[0]?.state}/>
     <OrderItems products={orderDetail[0]?.products}/>
   </section>;
 };
