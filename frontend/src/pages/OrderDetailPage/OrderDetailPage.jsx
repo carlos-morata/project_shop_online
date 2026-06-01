@@ -42,6 +42,8 @@ const OrderDetailPage = () => {
     </p> */}
     <OrderTracking state={orderDetail[0]?.state}/>
     <OrderItems products={orderDetail[0]?.products}/>
+    <Orderinfo />
+    <OrderSummary total_price={orderDetail[0]?.total_price}/>
   </section>;
 };
 
