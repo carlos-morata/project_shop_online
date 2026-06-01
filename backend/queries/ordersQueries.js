@@ -7,8 +7,8 @@ const queries = {
     
     // Añadir items del pedido
     addOrderItems:
-    ` INSERT INTO order_items(order_id, product_id, quantity, price)
-        VALUES($1, $2, $3, $4)
+    ` INSERT INTO order_items(order_id, product_id, quantity, price, size)
+        VALUES($1, $2, $3, $4, $5)
         RETURNING *;`,
 
     // Mostrar pedidos de usuario
@@ -41,7 +41,8 @@ const queries = {
             'name', p.name,
             'url_image', p.url_image,
             'price', p.price,
-            'quantity', i.quantity
+            'quantity', i.quantity,
+            'size', i.size
             )) AS products
         FROM orders o
         JOIN order_items i ON o.order_id = i.order_id
