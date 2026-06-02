@@ -29,7 +29,7 @@ const OrdersPage = () => {
   }, []);
 
   return <section className="orders-container">
-    <h2 className="title-myOrders">Mis Pedidos</h2>
+    <h2 className="title-myOrders">Historial de Mis Pedidos</h2>
     <p>Gestiona y revisa el estado de tus compras.</p>
     <section className="order-stateFilter-container">
       <button className="order-stateFilter-button">Todos</button>
