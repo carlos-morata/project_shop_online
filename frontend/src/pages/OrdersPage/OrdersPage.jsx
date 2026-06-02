@@ -17,7 +17,7 @@ const OrdersPage = () => {
           return;
         }
 
-        const response = await axios.get(`${VITE_API_URL}/api/order/`, 
+        const response = await axios.get(`${VITE_API_URL}/order/`, 
           { headers: { Authorization: `Bearer ${token}` } });
 
           setOrder(response.data.data);

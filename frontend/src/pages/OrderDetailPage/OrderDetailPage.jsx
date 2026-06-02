@@ -21,7 +21,7 @@ const OrderDetailPage = () => {
           return;
         }
 
-        const response = await axios.get(`${VITE_API_URL}/api/order/${order_id}`,
+        const response = await axios.get(`${VITE_API_URL}/order/${order_id}`,
           { headers: { Authorization: `Bearer ${token}` } });
           setOrderDetail(response.data.data);
         } catch (error) {
