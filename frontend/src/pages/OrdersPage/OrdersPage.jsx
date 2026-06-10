@@ -30,7 +30,7 @@ const OrdersPage = () => {
 
   return <section className="orders-container">
     <h2 className="title-myOrders">Historial de Mis Pedidos</h2>
-    <p>Gestiona y revisa el estado de tus compras.</p>
+    <p className="text-myOrders">Gestiona y revisa el estado de tus compras anteriores.</p>
     <section className="order-stateFilter-container">
       <button className="order-stateFilter-button">Todos</button>
       <button className="order-stateFilter-button">En camino</button>
@@ -42,18 +42,22 @@ const OrdersPage = () => {
     { order.length === 0 ? ( <p>Todavía no tienes pedidos.</p> ) : (
       order.map((item, index) => (
         <article key={index} className="order-article">
-          <h3 className="title-order">Pedido #{item.order_id}</h3>
-          <span className="order-state-text">{item.state}</span>
-          { item.products.slice(0, 3).map(product => <img key={index} src={product.url_image} />) }
-          { item.products.length > 3 && <span>+{item.products.length -3}</span> }
-          <p className="order-date-text">
-            { order[0]?.created_date && new Date(order[0].created_date).toLocaleDateString('es-ES', {
+          <div className="order-top-container">
+            <h3 className="title-order">Pedido #{item.order_id}</h3>
+            <span className="order-state-text">{item.state}</span>
+          </div>
+          <p className="order-date-text">Realizado el { order[0]?.created_date && new Date(order[0].created_date).toLocaleDateString('es-ES', {
               day: 'numeric',
               month: 'long',
               year: 'numeric' 
-          }) }
-        </p>
-          <p className="order-totalPrice-text">Total: {item.total_price}€</p>
+            }) }
+          </p>
+          <p className="order-totalPrice-text">Total
+            <span>{item.total_price}€</span>
+          </p>
+          <hr />
+          { item.products.slice(0, 3).map(product => <img key={index} src={product.url_image} />) }
+          { item.products.length > 3 && <span>+{item.products.length -3}</span> }
           <Link className="order-details-link" to={`/pedidos/${item.order_id}`}>Ver Detalles</Link>
         </article>
       ))
