@@ -1,0 +1,247 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.orderDetail-section {
+    width: 100vw;
+    background-color: #f8f6f6;
+    box-sizing: variables.$border-box;
+    padding: 0.25rem 0 4.5rem 0;
+    font-family: variables.$font-family;
+
+    .orderDetail-title {
+        font-size: variables.$title3;
+        margin: 10px 0 2px 10px;
+    }
+
+    .orderDetail-date {
+        margin: 0 0 10px 10px;
+        font-size: variables.$text2;
+        color: variables.$text-secondary;
+    }
+
+    .orderDetail-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 15px;
+        width: 100%;
+        list-style: none;
+        margin-bottom: 0.95rem;
+    }
+}
+
+.orderArticles-section {
+    width: 90%;
+    background-color: variables.$background-white;
+    border-radius: variables.$border-radius2;
+    margin: 0 auto;
+    border: 1px solid variables.$text-muted;
+
+    .orderArticles-title {
+        padding: 10px;
+    }
+
+    .orderArticle-container {
+        display: flex;
+        justify-content: space-around;
+        padding: 1.2rem;
+
+        .orderArticle-image {
+            width: 75px;
+            object-fit: cover;
+            border-radius: variables.$border-radius2;
+    }
+
+        .orderArticle-name {
+            font-size: 1.2em;
+        }
+
+        p {
+            margin-top: 8px;
+        }
+
+        .orderArticle-size {
+            color: variables.$text-secondary;
+        }
+
+        .orderArticle-quantity {
+            color: variables.$text-muted;
+        }
+
+        .orderArticle-price {
+            text-align: end;
+            font-weight: variables.$font-bold;
+            letter-spacing: variables.$letter-spacing;
+        }
+    }
+
+    .orderArticle-container:not(.orderArticle-container:last-child) {
+        border-bottom: 1px solid variables.$text-muted;
+    }
+}
+
+.orderInfo-section {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    padding: 0.95rem;
+    box-sizing: variables.$border-box;
+    background-color: variables.$background-white;
+    border: 1px solid variables.$text-muted;
+    border-radius: variables.$border-radius2;
+
+    .orderInfo-title {
+        font-size: variables.$text;
+        margin-bottom: 0.95rem;
+    }
+
+    .transport-title {
+        display: flex;
+        align-items: center;
+        column-gap: 0.75rem;
+        color: variables.$text-secondary;
+        font-size: 0.9em;
+        letter-spacing: variables.$letter-spacing;
+    }
+    
+    .lucide-truck {
+        color: variables.$primary;
+    }
+
+    .transport-text {
+        margin-left: 2.4rem;
+        font-size: variables.$text2;
+        font-weight: variables.$font-bold;
+    }
+
+    .tracking-title {
+        margin-top: 0.95rem;
+        font-size: variables.$text2;
+        color: variables.$text-secondary;
+        font-weight: normal;
+    }
+
+    .tracking-number {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 7.5px;
+        background-color: #f8f6f6;
+        color: variables.$primary;
+        font-size: variables.$text2;
+        font-weight: variables.$font-bold;
+        border-radius: variables.$border-radius2;
+        
+        svg {
+           width: 1em;
+           color: variables.$text-secondary;
+           cursor: variables.$pointer;
+        }
+    }
+
+    .address-title {
+        margin-top: 0.95rem;
+        font-size: variables.$text2;
+        color: variables.$text-secondary;
+        font-weight: normal;
+    }
+
+    .address-text {
+        margin-top: 2px;
+        font-size: variables.$text2;
+    }
+
+    .view-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 8px;
+        width: 100%;
+        padding: 7px 0;
+        margin-top: 0.95rem;
+        font-size: variables.$text2;
+        font-weight: variables.$font-bold;
+        background-color: variables.$primary;
+        color: variables.$background-white;
+        border: none;
+        border-radius: variables.$border-radius2;
+    }
+}
+
+.summary-section {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    padding: 0.95rem;
+    box-sizing: variables.$border-box;
+    background-color: variables.$background-dark;
+    border-radius: variables.$border-radius2;
+
+    .summary-title {
+        color: variables.$background-white;
+    }
+
+    .summary-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: variables.$text-muted;
+
+        span {
+            color: variables.$background-white;
+        }
+    }
+
+    .summary-subtotal {
+        margin-top: 0.8rem;
+    }
+
+    .summary-shipping {
+        margin: 0.5rem 0 0.75rem 0;
+
+        span {
+            color: #16a455;
+        }
+    }
+
+    hr {
+        border-color: variables.$text-muted;
+    }
+
+    
+    .summary-bottom-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1.1rem 0 1.4rem 0;
+        color: variables.$background-white;
+
+        .summary-total {
+            font-size: variables.$title3;
+            font-weight: variables.$font-bold;
+
+            span {
+                display: block;
+                font-size: 0.85rem;
+                text-align: end;
+                font-weight: normal;
+                color: variables.$text-muted;
+            }
+        }
+    }
+
+    .pay-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 8px;
+        width: 100%;
+        padding: 7px 0;
+        font-size: variables.$text2;
+        font-weight: bold;
+        background-color: #312527;
+        color: variables.$background-white;
+        border: 1px solid variables.$text-muted;
+        border-radius: 0.5rem
+    }
+}

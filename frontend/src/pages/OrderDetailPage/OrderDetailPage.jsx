@@ -21,7 +21,7 @@ const OrderDetailPage = () => {
           return;
         }
 
-        const response = await axios.get(`${VITE_API_URL}/api/order/${order_id}`,
+        const response = await axios.get(`${VITE_API_URL}/order/${order_id}`,
           { headers: { Authorization: `Bearer ${token}` } });
           setOrderDetail(response.data.data);
         } catch (error) {
@@ -31,10 +31,9 @@ const OrderDetailPage = () => {
       fetchOrderId();
     }, [order_id]);
 
-  return <section>
-    <h3>Pedido #{order_id}</h3>
-    <p>
-      { orderDetail[0]?.created_date && new Date(orderDetail[0].created_date).toLocaleDateString('es-ES', {
+  return <section class="orderDetail-section">
+    <h3 class="orderDetail-title">Pedido #{order_id}</h3>
+    <p class="orderDetail-date">Realizado el { orderDetail[0]?.created_date && new Date(orderDetail[0].created_date).toLocaleDateString('es-ES', {
         day: 'numeric',
         month: 'long',
         year: 'numeric' 

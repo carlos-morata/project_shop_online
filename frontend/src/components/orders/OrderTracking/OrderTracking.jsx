@@ -10,7 +10,7 @@ const OrderTracking = ({ state }) => {
   }
   const currentIndex = steps.indexOf(state);
 
-  return <ol>
+  return <ol className="orderDetail-list">
      { steps.map((step, index) => (
         <li key={index} className={index < currentIndex ? 'complete' : index === currentIndex ? 'active' : 'pending'}>
           { stateLabels[step] }

@@ -1,0 +1,115 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.orders-container {
+    width: 100vw;
+    background-color: #f8f6f6;
+    box-sizing: variables.$border-box;
+    padding: 0.25rem 0 4.5rem 0;
+    font-family: variables.$font-family;
+
+    .title-myOrders {
+        margin: 1.2rem 0 0 14px;
+        font-size: variables.$title2;
+    }
+
+    .text-myOrders {
+        font-size: 0.95em;
+        color: variables.$text-secondary;
+        margin-left: 14px;
+    }
+
+    .order-stateFilter-container {
+        margin: 15px 0px 15px 14px;
+
+        .order-stateFilter-button {
+            padding: 0.5rem 0.75rem;
+            background-color: variables.$background-white;
+            border: 0.1px solid #9a4c593b;
+            border-radius: variables.$border-radius2;
+        }
+
+        .order-stateFilter-button:not(.order-stateFilter-button:last-child) {
+            margin-right: 10px;
+        }
+
+        .order-stateFilter-button:last-child {
+            margin-top: 8px;
+        }
+    }
+
+    .all-userOrders-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1.5rem;
+        width: 100vw;
+        box-sizing: variables.$border-box;
+
+        .order-article {
+            width: 90%;
+            background-color: variables.$background-white;
+            border-radius: variables.$border-radius2;
+            box-sizing: variables.$border-box;
+            padding: 0.9rem;
+
+            .order-top-container {
+                display: flex;
+                align-items: center;
+                column-gap: 0.95rem;
+
+                .title-order {
+                    font-size: 1.3em;
+                }
+            }
+
+            .order-date-text {
+                margin: 3px 0px 12px 0px;
+                font-size: variables.$text2;
+                color: variables.$text-secondary;
+            }
+
+            .order-totalPrice-text {
+                width: 28%;
+                text-align: end;
+                font-size: variables.$text2;
+                text-transform: variables.$uppercase;
+                color: variables.$text-secondary;
+                font-weight: variables.$font-bold;
+                margin-bottom: 2px;
+
+                span {
+                    display: block;
+                    font-size: 1.4em;
+                    color: variables.$primary;
+                }
+            }
+
+            img {
+                width: 55px;
+                border-radius: variables.$border-radius2;
+                margin-right: 0.9rem;
+            }
+
+            hr {
+                margin: 1rem 0;
+            }
+
+            .order-details-link {
+                display: block;
+                width: fit-content;
+                margin: 1.2rem auto;
+                padding: 0.7rem 1.5rem;
+                text-decoration: none;
+                background-color: #9a4c593b;
+                color: variables.$text-main;
+                border-radius: variables.$border-radius2;
+                font-weight: variables.$font-bold;
+            }
+        }
+
+        .order-article:hover {
+            border: 2px solid variables.$text-secondary;
+        }
+    }
+}

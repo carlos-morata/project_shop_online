@@ -1,20 +1,23 @@
 import React from "react";
 
 const OrderItems = ({ products }) => {
-  return <>
-  <h3>Artículos del Pedido ({ products && products.length })</h3>
+  return <section className="orderArticles-section">
+  <h3 class="orderArticles-title">Artículos del Pedido ({ products && products.length })</h3>
+  <hr />
     { products &&
       products.map((item, index) => (
-        <article key={index}>
-          <img src={item.url_image} alt={item.name} />
-          <h4>{item.name}</h4>
-          <p>Talla: {item.size}</p>
-          <p>Cantidad: {item.quantity}</p>
-          <p>{item.price}€</p>
+        <article className="orderArticle-container" key={index}>
+          <img className="orderArticle-image" src={item.url_image} alt={item.name} />
+          <div>
+            <h4 className="orderArticle-name">{item.name}</h4>
+            <p className="orderArticle-size">Talla: {item.size}</p>
+            <p className="orderArticle-quantity">Cantidad: {item.quantity}</p>
+            <p className="orderArticle-price">{item.price}€</p>
+          </div>
         </article>
       )
-      )}
-  </>;
+    )}
+  </section>;
 };
 
 export default OrderItems;
