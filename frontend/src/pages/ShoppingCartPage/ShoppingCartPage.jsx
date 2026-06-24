@@ -74,7 +74,7 @@ const ShoppingCartPage = () => {
       ))
     )}
 
-    <CartSubtotal cart={cart} />
+    <CartSubtotal cart={cart} cartItems={cart} />
     <FreeReturns />
   </section>;
 };
