@@ -72,11 +72,12 @@ const deleteProductCart = async (req, res) => {
         res.status(204).send();
     } catch (error) {
         console.error(error);
+
         if(error.message === 'Error al borrar producto del carrito') {
-        res.status(404).json({ success: false, message: "Item no existe" });
-    } else {
-        res.status(500).json({ success: false, message: "Error interno del servidor" });
-    }
+            res.status(404).json({ success: false, message: "Item no existe" }); 
+        } else {
+            res.status(500).json({ success: false, message: "Error interno del servidor" });
+        }
     }
 }
 

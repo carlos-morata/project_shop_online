@@ -27,7 +27,12 @@ const queries = {
     
     deleteProductCart:
      ` DELETE FROM cart
-        WHERE cart_id = $1`
+        WHERE cart_id = $1`,
+
+    // Vaciar carrito de usuario al confirmar pedido
+    emptyUserCart:
+    ` DELETE FROM cart
+        WHERE user_id = $1`
 }
 
 module.exports = queries;
