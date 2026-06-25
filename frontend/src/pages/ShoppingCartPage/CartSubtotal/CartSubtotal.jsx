@@ -1,6 +1,7 @@
 import React from "react";
+import useOrder from '../../../hooks/useOrder';
 
-const CartSubtotal = ( { cart } ) => {
+const CartSubtotal = ( { cart,cartItems } ) => {
   
   // Calculamos el subtotal del carrito
   const subtotal = cart.reduce((accumulator, item) => {
@@ -8,6 +9,13 @@ const CartSubtotal = ( { cart } ) => {
 
     return accumulator + ( precio * item.quantity );
   }, 0);
+
+  const { addToOrder } = useOrder();
+
+  const handleBtnClick = () => {
+    addToOrder(subtotal, cartItems);
+
+  }
 
   return <article className="cartSubtotal-container">
     <h2 className="orderSummary-title">Resumen del Pedido</h2>
@@ -34,7 +42,7 @@ const CartSubtotal = ( { cart } ) => {
       </p>
     </section>
 
-    <button className="finalizePurchase-button">Finalizar Compra &#8594;</button>
+    <button onClick={handleBtnClick} className="finalizePurchase-button">Finalizar Compra &#8594;</button>
 
   </article>;
 };
