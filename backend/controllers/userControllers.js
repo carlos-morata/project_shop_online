@@ -39,8 +39,25 @@ const logout = async(req, res) => {
     }
 }
 
+// Leer Datos
+const readUserData = async (req, res) => {
+    const user_id = req.user.userId;
+    try {
+        const result = await userServices.getUserDataServices(user_id);
+
+        res.status(200).json({
+            success: true,
+            data: result
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: "Error interno del servidor" });
+    }
+}
+
 module.exports = {
     createUser,
     login,
-    logout
+    logout,
+    readUserData
 }
