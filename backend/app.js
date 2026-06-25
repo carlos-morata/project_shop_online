@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Importar Rutas de Usuarios
 const userRoutes = require('./routes/userRoutes');
-app.use('/', userRoutes);
+app.use('/api/users', userRoutes);
 
 // Importar Rutas de Productos
 const productRoutes = require('./routes/productRoutes');
