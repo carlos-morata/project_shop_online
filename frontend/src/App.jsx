@@ -39,21 +39,20 @@ function App() {
         <Route path='/' element={<HomePage />}/> {/* Página Principal */}
         <Route path='/legalidad' element={<LegalPage />}/> {/* Políticas Legales */}
         <Route path='/creditos' element={<AuthorPage />}/> {/* Derechos de Autor */}
-        <Route path='/creditos' element={<AuthorPage />}/> {/* Derechos de Autor */}
+        <Route path='/panel-usuario' element={<UserPage />}/> {/* Panel de Usuario */}
         <Route path='/registro' element={<RegisterUser />}/> {/* Registro de Usuario */}
         <Route path='/inicioSesión' element={<LoginUser />}/> {/* Inicio Sesión de Usuario */}
-        <Route path='/user' element={<UserPage />}/> {/* Panel de Usuario */}
         <Route path='/contacto' element={<ContactForm />}/> {/* Contacto */}
         <Route path='/carrito' element={<ShoppingCartPage />}/> {/* Carrito de la compra */}
         <Route path='/pedidos' element={<OrdersPage />} /> {/* Pedidos */}
 
         {/* Rutas Dinámicas */}
+        <Route path='/buscar/:query' element={<SearchPage />} />
         <Route path='/:gender' element={<CategoryLanding />}> {/* Mujer, Hombre, etc */}
           <Route index element={<AllProducts />}/> {/* mujer/todos los productos */}
           <Route path=':category' element={<CategoryProduct />}/> {/* mujer/abrigos */}
         </Route>
         <Route path='/:gender/:category/:product_id' element={<ProductDetail />}/> {/* mujer/abrigos/abrigo_1 */}
-        <Route path='/buscar/:query' element={<SearchPage />} />
         <Route path='/pedidos/:order_id' element={<OrderDetailPage />} /> {/* pedidos/pedido_1 */}
 
         {/* Rutas Para Manejar Fallos */}
