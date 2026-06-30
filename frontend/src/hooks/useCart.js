@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../config/axiosInstance';
 
 const useCart = () => {
 
@@ -20,7 +20,7 @@ const useCart = () => {
 
         try {
             // Petición al endpoint
-            const response = await axios.post('http://localhost:3000/api/cart/add-product', {
+            const response = await api.post('/cart/add-product', {
                 product_id: productId,
                 quantity: quantity,
                 size: sizes

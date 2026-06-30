@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom"; 
-import axios from 'axios';
-const VITE_API_URL = import.meta.env.VITE_API_URL;
+import api from '../config/axiosInstance';
 
 const useOrder = () => {
     const navigate = useNavigate();
@@ -21,7 +20,7 @@ const useOrder = () => {
         // }
         
         try {
-            const response = await axios.post(`${VITE_API_URL}/order/add`, {
+            const response = await api.post(`/order/add`, {
              total_price: total_price,
              cartItems: cartItems
             }, { headers: { Authorization: `Bearer ${token}` } });

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
-const VITE_API_URL = import.meta.env.VITE_API_URL;
+import api from '../../config/axiosInstance';
 
 const OrdersPage = () => {
 
@@ -17,7 +16,7 @@ const OrdersPage = () => {
           return;
         }
 
-        const response = await axios.get(`${VITE_API_URL}/order/`, 
+        const response = await api.get(`/order/`, 
           { headers: { Authorization: `Bearer ${token}` } });
 
           setOrder(response.data.data);

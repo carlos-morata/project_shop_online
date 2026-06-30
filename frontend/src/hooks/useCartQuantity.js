@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../config/axiosInstance';
 
 const useCartQuantity = (setCart) => {
 
@@ -14,7 +14,7 @@ const useCartQuantity = (setCart) => {
             // Obtener token
             const token = localStorage.getItem('token');
 
-            await axios.put('http://localhost:3000/api/cart/update-quantity', {
+            await api.put('/cart/update-quantity', {
                 product_id: product_id,
                 size: size,
                 quantity: newQuantity
