@@ -4,7 +4,7 @@ import useLogout from '../../../hooks/useLogout';
 
 const ListUserPanel = () => {
   const { handleLogout } = useLogout();
-  return <ul>
+  return <ul className="userPanel-list">
     <li>
       <Link to='/panel-usuario'>Panel Principal</Link>
     </li>

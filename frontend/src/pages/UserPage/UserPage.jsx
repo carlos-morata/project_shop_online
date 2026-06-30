@@ -29,17 +29,20 @@ const UserPage = () => {
   }, []);
 
   return <>
-  <h2>Resumen de Cuenta</h2>
-  <h3>Panel de Usuario</h3>
-  { user && <p>Bienvenido/a de nuevo {user.username}. Gestiona tus pedidos y preferencias aquí.</p> }
+  <h2 className="summary-title">Resumen de Cuenta</h2>
+  <h3 className="panelUser-title">Panel de Usuario</h3>
+  { user && <p className="welcome-text">Bienvenido/a de nuevo {user.username}. Gestiona tus pedidos y preferencias aquí.</p> }
   <ListUserPanel />
 
+  <h4 className="userData-title">Datos de Usuario</h4>
   { user &&
     <form className="userData-form">
-      <label>Nombre de Usuario:</label>
-      <input value={user?.username} readOnly/>
-      <label>Correo Eléctronico:</label>
-      <input value={user?.email} readOnly/>
+      <label className="user-label">Nombre de Usuario:
+        <input value={user?.username} readOnly className="user-input"/>
+      </label>
+      <label className="user-label">Correo Eléctronico:
+        <input value={user?.email} readOnly className="user-input"/>
+      </label>
     </form>
   }
   </>;
