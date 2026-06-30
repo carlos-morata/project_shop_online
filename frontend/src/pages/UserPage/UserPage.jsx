@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import api from '../../config/axiosInstance';
 const VITE_API_URL = import.meta.env.VITE_API_URL;
 import ListUserPanel from "../../components/common/ListUserPanel"; 
 
@@ -16,7 +16,7 @@ const UserPage = () => {
           return;
         }
 
-        const response = await axios.get(`${VITE_API_URL}/users/`, 
+        const response = await api.get(`/users/`, 
           { headers: { Authorization: `Bearer ${token}`} });
 
           setUser(response.data.data);
