@@ -1,0 +1,64 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.summary-title {
+    font-size: 0.95em;
+    color: variables.$primary;
+    letter-spacing: variables.$letter-spacing;
+    margin-left: 1.1rem;
+}
+
+.panelUser-title {
+    font-size: variables.$title3;
+    margin-left: 1.1rem;
+}
+
+.welcome-text {
+    margin: 0.5rem 0 1.2rem 1.1rem;
+    color: variables.$text-muted;
+}
+
+.userPanel-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    row-gap: 10px;
+    list-style: none;
+
+    li > a, button {
+        padding: 8px;
+        text-decoration: none;
+        background-color: variables.$primary;
+        color: variables.$background-white;
+        border-radius: variables.$border-radius2;
+        border: none;
+        font-weight: variables.$font-bold;
+    }
+}
+
+.userData-title {
+    font-size: variables.$text;
+    text-align: center;
+    margin: 1.5rem 0 0.4rem 0;
+}
+
+.userData-form {
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    margin: 0 auto;
+
+    label {
+        color: #4d4646;
+        font-weight: bold;
+    }
+
+    input {
+        padding: 6px;
+        background-color: #f2f0ef;
+        border: none;
+        color: #1b0d10;
+    }
+}

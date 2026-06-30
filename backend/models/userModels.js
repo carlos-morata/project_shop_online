@@ -42,8 +42,15 @@ const logoutModel = async (email, password) => {
     }
 }
 
+// Leer Datos Usuario
+const getUserDataModel = async (user_id) => {
+        const resultUserData = await pool.query(queries.getUserData, [ user_id ]);
+        return resultUserData.rows[0];
+}
+
 module.exports = {
     createUser,
     loginModel,
-    logoutModel
+    logoutModel,
+    getUserDataModel
 }
