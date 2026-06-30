@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, Outlet, NavLink } from "react-router-dom";
-import axios from 'axios';
+import api from '../../config/axiosInstance';
 import sectionImgWomen from '../../../public/images/SeccionPrincipalMujer.png';
 import sectionImgMen from '../../../public/images/SeccionPrincipalHombre.png'
 
@@ -13,7 +13,7 @@ const CategoryLanding = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}`);
+        const response = await api.get(`/products?gender=${gender}`);
 
         setCategories(response.data.categories || []);
 

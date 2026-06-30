@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from 'axios';
+import api from '../../config/axiosInstance';
 import Pagination from '../../components/common/Pagination';
 
 const AllProducts = () => {
@@ -18,7 +18,7 @@ const AllProducts = () => {
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/products?gender=${gender}&limit=2&page=${currentPage}`);
+        const response = await api.get(`/products?gender=${gender}&limit=2&page=${currentPage}`);
 
         setProducts(response.data.products || []);
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from 'axios';
-const VITE_API_URL = import.meta.env.VITE_API_URL;
+import api from '../../config/axiosInstance';
 // Importaciones componentes de orders
 import Orderinfo from '../../components/orders/OrderInfo';
 import OrderItems from '../../components/orders/OrderItems';
@@ -21,7 +20,7 @@ const OrderDetailPage = () => {
           return;
         }
 
-        const response = await axios.get(`${VITE_API_URL}/order/${order_id}`,
+        const response = await api.get(`/order/${order_id}`,
           { headers: { Authorization: `Bearer ${token}` } });
           setOrderDetail(response.data.data);
         } catch (error) {

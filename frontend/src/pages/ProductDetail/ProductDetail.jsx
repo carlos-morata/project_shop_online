@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from 'axios';
+import api from '../../config/axiosInstance';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +18,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProductId = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/products/${gender}/${category.toLowerCase()}/${product_id}`);
+        const response = await api.get(`/products/${gender}/${category.toLowerCase()}/${product_id}`);
         setProduct(response.data);
       } catch (error) {
         console.log(error);

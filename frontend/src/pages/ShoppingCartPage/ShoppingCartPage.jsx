@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import api from '../../config/axiosInstance';
 import useCartQuantity from "../../hooks/useCartQuantity";
 import CartSubtotal from "./CartSubtotal";
 import FreeReturns from "../../components/common/FreeReturns";
@@ -21,7 +21,7 @@ const ShoppingCartPage = () => {
           return;
         }
 
-        const response = await axios.get(`http://localhost:3000/api/cart/`, 
+        const response = await api.get(`/cart/`, 
           { headers: { Authorization: `Bearer ${token}` } });
 
         setCart(response.data.data);
