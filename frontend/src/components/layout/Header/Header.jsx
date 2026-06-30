@@ -32,7 +32,7 @@ const Header = () => {
       <SearchProducts />
       <ShoppingCart />
       {isLogged ? (
-    <Link to='/user' className="links">
+    <Link to='/panel-usuario' className="links">
       <FontAwesomeIcon icon={faUser} />
     </Link>
       ) : (
