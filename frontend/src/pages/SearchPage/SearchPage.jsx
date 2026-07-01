@@ -26,10 +26,12 @@ const SearchPage = () => {
   }
 
   return <section className="search-container">
-    <input type="text" value={searchValue} onChange={handleChange} placeholder="Buscador de Productos" />
-    <button type="submit" className="search-btn" onClick={handleSubmit}>
-      <FontAwesomeIcon icon={faMagnifyingGlass} className="links" />
-    </button>
+    <div className="searchInput-container">
+      <input className="search-input" type="text" value={searchValue} onChange={handleChange} placeholder="Buscador de Productos" />
+      <button type="submit" className="search-btn" onClick={handleSubmit}>
+        <FontAwesomeIcon icon={faMagnifyingGlass} className="links" />
+      </button>
+    </div>
     <h1>Resultados de Búsqueda Para {searchValue}</h1>
 
     {results.length === 0 && <p>Cargando...</p>}

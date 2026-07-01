@@ -29,7 +29,7 @@ const Header = () => {
       <h1>Luxe</h1>
     </Link>
     <div className="right-header">
-      <Link to='/buscar'> 
+      <Link to='/buscar' className="links"> 
         <FontAwesomeIcon icon={faMagnifyingGlass} />
       </Link>
       <ShoppingCart />
