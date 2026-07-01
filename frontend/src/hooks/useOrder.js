@@ -20,7 +20,7 @@ const useOrder = () => {
         // }
         
         try {
-            const response = await api.post(`/order/add`, {
+            const response = await api.post(`/api/order/add`, {
              total_price: total_price,
              cartItems: cartItems
             }, { headers: { Authorization: `Bearer ${token}` } });

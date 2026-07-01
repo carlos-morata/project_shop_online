@@ -20,7 +20,7 @@ const OrderDetailPage = () => {
           return;
         }
 
-        const response = await api.get(`/order/${order_id}`,
+        const response = await api.get(`/api/order/${order_id}`,
           { headers: { Authorization: `Bearer ${token}` } });
           setOrderDetail(response.data.data);
         } catch (error) {

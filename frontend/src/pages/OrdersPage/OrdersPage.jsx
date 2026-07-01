@@ -16,7 +16,7 @@ const OrdersPage = () => {
           return;
         }
 
-        const response = await api.get(`/order/`, 
+        const response = await api.get(`/api/order/`, 
           { headers: { Authorization: `Bearer ${token}` } });
 
           setOrder(response.data.data);

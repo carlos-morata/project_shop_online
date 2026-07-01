@@ -16,7 +16,7 @@ const UserPage = () => {
           return;
         }
 
-        const response = await api.get(`/users/`, 
+        const response = await api.get(`/api/users/`, 
           { headers: { Authorization: `Bearer ${token}`} });
 
           setUser(response.data.data);

@@ -13,7 +13,7 @@ const CategoryLanding = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await api.get(`/products?gender=${gender}`);
+        const response = await api.get(`/api/products?gender=${gender}`);
 
         setCategories(response.data.categories || []);
 
