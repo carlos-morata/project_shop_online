@@ -47,6 +47,7 @@ const ShoppingCartPage = () => {
       Tienes {totalProductsCart} { totalProductsCart === 1 ? 'artículo seleccionado' : 'artículos seleccionados' }
     </p> 
     <hr />
+    <section className="productsCart-section">
     { cart.length === 0 ? ( <p>Tú cesta está vacía.</p> ) : (
       cart.map((item, index) => (
         <article key={index} className="productCart-article">
@@ -73,6 +74,7 @@ const ShoppingCartPage = () => {
         </article>
       ))
     )}
+    </section>
 
     <CartSubtotal cart={cart} cartItems={cart} />
     <FreeReturns />

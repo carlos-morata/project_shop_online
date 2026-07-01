@@ -17,6 +17,7 @@
     height: 75vh;
     box-sizing: variables.$border-box;
     background-image: url(../../assets/images/Foto\ New\ Collection.png);
+    @include mixins.background-image;
 
     .content-home {
         position: absolute;
@@ -74,6 +75,10 @@
     padding: 1.2em;
     margin-bottom: 4.5em;
 
+    @include mixins.desktop {
+        width: 97vw;
+    }
+
     span {
         text-transform: variables.$uppercase;
         color: variables.$primary;
@@ -115,27 +120,41 @@
     box-sizing: variables.$border-box;
     row-gap: 1em;
 
+    @include mixins.desktop {
+        column-gap: 10px;
+    }
+
+
     .genre-section {
         position: relative;
         width: 85%;
         height: 400px;
         cursor: variables.$pointer;
+
+        @include mixins.desktop {
+            width: 45%;
+        }
+
     }
 
     .genre-women {
         background-image: url(../../assets/images/SeccionMujer.png);
+        @include mixins.background-image;
     }
 
     .genre-men {
         background-image: url(../../assets/images/SeccionHombre.png);
+        @include mixins.background-image;
     }
 
     .genre-accesories {
         background-image: url(../../assets/images/SeccionAccesorios.png);
+        @include mixins.background-image;
     }
 
     .genre-sales {
         background-image: url(../../assets/images/SeccionRebajas.png);
+        @include mixins.background-image;
     }
 
     .content-genre {
