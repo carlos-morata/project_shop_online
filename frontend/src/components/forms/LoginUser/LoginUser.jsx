@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import api from '../../../config/axiosInstance';
 
 const LoginUser = () => {
   const navigate = useNavigate();
@@ -29,12 +29,12 @@ const LoginUser = () => {
     };
 
     try {
-      const response = await axios.post(`http://localhost:3000/api/login`, {
+      const response = await api.post(`/users/login`, {
         email: formValue.email,
         password: formValue.password
       });
 
-      localStorage.setItem('token', response.data.user);
+      localStorage.setItem('token', response.data.user.token);
       window.location.href = '/';
 
       setFormValue(response.data);
@@ -45,22 +45,23 @@ const LoginUser = () => {
     }
   }
 
-  return <section className="login-container">
-    <h1>Inicia Sesión</h1>
+  return <section className="userForm-container">
+    <h2 className="user-title"><span>Inicia</span> Sesión</h2>
 
     {error && <p>{error}</p>}
     
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Correo Eléctronico</label>
-      <input type="email" name="email" id="email" required placeholder="pepe@gmail.com" onChange={handleChange} />
+    <form className="user-form" onSubmit={handleSubmit}>
+      <label className="user-label" htmlFor="email">Correo Eléctronico</label>
+      <input className="user-input" type="email" name="email" id="email" required placeholder="pepe@gmail.com" onChange={handleChange} />
 
-      <label htmlFor="password">Contraseña</label>
-      <input type="password" name="password" id="password" required placeholder="******" onChange={handleChange} />
+      <label className="user-label" htmlFor="password">Contraseña</label>
+      <input className="user-input" type="password" name="password" id="password" required placeholder="******" onChange={handleChange} />
 
-      <button type="submit">Iniciar Sesión</button>
+      <button className="user-button" type="submit">Iniciar Sesión</button>
     </form>
-    <p className="register-text">¿Todavía no tienes una Cuenta de Usuario?</p>
+    <p className="user-text">¿Todavía no tienes una Cuenta?
     <Link to='/registro'>Regístrate</Link>
+    </p>
   </section>;
 };
 

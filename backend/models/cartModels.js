@@ -1,15 +1,56 @@
 const pool = require("../config/db_sql");
 const queries = require("../queries/cartQueries");
 
+// Añadir productos al carrito
 const addProductToCartModel = async (user_id, product_id, quantity, size) => {
     try {
-        const resultCart = await pool.query(queries.addProductToCart, [user_id, product_id, quantity, size]);
+        const resultCart = await pool.query(queries.addProductToCart, [ user_id, product_id, quantity, size ]);
         return resultCart.rows;
     } catch (error) {
         throw error;
     }
 }
 
+// Leer productos en el carrito
+const getProductsCartModel = async (user_id) => {
+    try {
+        const resultProductsCart = await pool.query(queries.getProductsCart, [ user_id ]);
+        return resultProductsCart.rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// Incrementar o decrementar cantidad de producto en carrito
+const updateQuantityModel = async(quantity, user_id, product_id, size) => {
+    try {
+        const resultUpdateQuantity = await pool.query(queries.updateQuantity, [ quantity, user_id, product_id, size ]);
+        return resultUpdateQuantity.rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// Eliminar producto del carrito
+const deleteProductCartModel = async (cart_id) => {
+    try {
+        const resultDelete = await pool.query(queries.deleteProductCart, [ cart_id ])
+        return { rows: resultDelete.rows, rowCount: resultDelete.rowCount };
+    } catch (error) {
+        throw error;
+    }
+}
+
+// Vaciar carrito de usuario al hacer pedido
+const emptyUserCartModel = async (client, user_id) => {
+    const resultEmpty = await client.query(queries.emptyUserCart, [ user_id ]);
+    return resultEmpty.rows[0];
+}
+
 module.exports = {
-    addProductToCartModel
+    addProductToCartModel,
+    getProductsCartModel,
+    updateQuantityModel,
+    deleteProductCartModel,
+    emptyUserCartModel
 }

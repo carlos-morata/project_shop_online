@@ -1,0 +1,90 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.products-container {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100vw;
+    box-sizing: variables.$border-box;
+
+    
+    .showProducts-text {
+        align-self: center;
+    }
+    
+    hr {
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.products-grid {
+    width: 100%;
+
+    @include mixins.tablet {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .product-link {
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+    }
+
+    .product-article {
+        width: 90%;
+        margin-bottom: 1.5rem;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 55vh;
+        object-fit: cover;
+        border-radius: variables.$border-radius2;
+    }
+
+    .product-title {
+        font-size: variables.$text;
+        color: #000;
+        margin: 0.35rem 0rem 0.35rem 0.35rem;
+    }
+    
+    .product-price {
+        color: #000;
+        font-weight: variables.$font-bold;
+        margin-left: 0.35rem;
+    }
+
+    .product-article h2 {
+        color: variables.$text-main;
+    }
+}
+
+.pagination-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1.5rem;
+    box-sizing: variables.$border-box;
+
+    .pagination-text {
+        color: variables.$text-muted;
+        font-weight: variables.$font-bold;
+    }
+
+    .pagination-buttons {
+        font-size: variables.$title3;
+        padding: 0.5rem;
+        color: variables.$primary;
+        background-color: variables.$background-light;
+        font-weight: variables.$font-bold;
+        border-radius: 50px;
+        border: none;
+        box-shadow: 2px 0px 7px 2px variables.$text-muted;
+    }
+}

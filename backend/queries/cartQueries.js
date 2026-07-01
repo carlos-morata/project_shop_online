@@ -1,7 +1,38 @@
 const queries = {
     addProductToCart: 
-    ` INSERT INTO cart_items (user_id, product_id, quantity, size)
-        VALUES ($1, $2, $3, $4);`
+    ` INSERT INTO cart (user_id, product_id, quantity, size)
+        VALUES ($1, $2, $3, $4)
+        ON CONFLICT (user_id, product_id, size)
+        DO UPDATE SET quantity = cart.quantity + EXCLUDED.quantity
+        RETURNING *;`,
+    
+    getProductsCart:
+    ` SELECT
+        c.cart_id,
+        c.quantity,
+        c.size,
+        p.product_id,
+        p.name,
+        p.price,
+        p.url_image
+     FROM cart c
+     JOIN products p ON c.product_id = p.product_id
+     WHERE c.user_id = $1; `,
+    
+    updateQuantity:
+     ` UPDATE cart
+        SET quantity = $1
+        WHERE user_id =$2 AND product_id = $3 AND size = $4
+        RETURNING *;`,
+    
+    deleteProductCart:
+     ` DELETE FROM cart
+        WHERE cart_id = $1`,
+
+    // Vaciar carrito de usuario al confirmar pedido
+    emptyUserCart:
+    ` DELETE FROM cart
+        WHERE user_id = $1`
 }
 
 module.exports = queries;

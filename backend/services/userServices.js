@@ -31,12 +31,23 @@ const logInServices = async(email, password) => {
     }
 
     const token = jwt.sign(
-        { userId: loginUser.user_id, email: loginUser.email, rol: loginUser.rol }, process.env.JWT_SECRET, { expiresIn: '5m' })
+        { userId: loginUser.user_id, email: loginUser.email, rol: loginUser.rol }, process.env.JWT_SECRET, { expiresIn: '1h' })
 
     return { token, loginUser }
 }
 
+// Leer Datos
+const getUserDataServices = async(user_id) => {
+    try {
+        const resutlUserData = await userModels.getUserDataModel(user_id);
+        return resutlUserData;
+    } catch(error) {
+        throw error;
+    } 
+}
+
 module.exports = {
     createUser,
-    logInServices
+    logInServices,
+    getUserDataServices
 }

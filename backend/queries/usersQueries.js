@@ -15,7 +15,12 @@ const queries = {
     // Logout
     logoutUser:
         ` SELECT * FROM users
-            WHERE email = $1 AND password = $2;`
+            WHERE email = $1 AND password = $2;`,
+    
+    // Datos Usuario
+    getUserData:
+        ` SELECT username, email FROM users
+            WHERE user_id = $1;`
 }
 
 module.exports = queries;

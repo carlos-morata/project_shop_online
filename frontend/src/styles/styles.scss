@@ -10,13 +10,20 @@
 @use './components/SearchProducts.scss';
 
 @use './components/RegisterUser';
-@use './components/LoginUser.scss';
+@use './components/FreeReturns.scss';
 
 // Importaciones de Páginas
 @use './pages/HomePage';
+@use './pages/ShoppingCartPage.scss';
 
 @use './pages/CategoryLanding';
-@use './pages/CategoryProduct';
 @use './pages/ProductDetail';
+@use './pages/ProductsGrid';
+@use './pages/CartSubtotal';
+
+@use './pages/OrdersPage';
+@use './pages/OrderDetailPage';
+
+@use './pages/UserPage';
 
 @use './pages/SearchPages';

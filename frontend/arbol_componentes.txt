@@ -28,6 +28,7 @@ App.jsx
             <Img /> ---> Imagen
             <Categories /> ---> Categorías Abrigos, etc...
             <ProductsList />
+            <AllProducts />
         </CategoryLanding>
 
         <CategoryProduct> ---> Página Categoría "Abrigos" --> Ruta /:genero/:categoria (/mujer/abrigos)
@@ -60,7 +61,8 @@ App.jsx
 - src/
     -- components/
         -- common/
-            npx crcf src/components/common/
+            npx crcf src/components/common/Pagination -j --notest -f
+            npx crcf src/components/common/ListUserPanel -j --notest -f
         -- forms/
             npx crcf src/components/forms/RegisterUser ContactForm -j --notest -f
         -- layout/
@@ -72,6 +74,12 @@ App.jsx
                 npx crcf src/components/layout/Footer/FooterLinks SocialLinks -j --notest -f
     -- pages/
         npx crcf src/pages/HomePage CategoryLanding CategoryProduct ProductDetail LegalPage AuthorPage NotFoundPage -j --notest -f
+        npx crcf src/pages/AllProducts -j --notest -f
         npx crcf src/pages/UserPage -j --notest -f
+        npx crcf src/pages/ShoppingCartPage -j --notest -f
+        npx crcf src/pages/OrdersPage -j --notest -f
+        npx crcf src/pages/OrderDetailPage -j --notest -f
+    -- orders/
+        npx crcf src/components/orders/OrderTracking OrderItems OrderInfo OrderSummary -j --notest -f
 
 -- styles/

@@ -1,20 +1,29 @@
 @use "../utils/variables.scss" as variables;
 @use '../utils/mixins.scss' as mixins;
 
-.register-container {
+.userForm-container {
     margin-top: 25px;
     width: 100vw;
     box-sizing: variables.$border-box;
+    font-family: variables.$font-family;
 
-    h1 {
-        text-align: center;
-        margin-bottom: 10px;
-        color: variables.$text-muted;
-        letter-spacing: variables.$letter-spacing;
-        font-size: variables.$title1;
+    @include mixins.desktop {
+        width: 65vw;
+        margin: 0 auto;
     }
 
-    form {
+    .user-title {
+        text-align: center;
+        margin-bottom: 10px;
+        color: variables.$text-main;
+        font-size: variables.$title1;
+
+        span {
+            color: variables.$primary;
+        }
+    }
+
+    .user-form {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -22,50 +31,61 @@
         box-sizing: variables.$border-box;
     }
 
-    form label {
-        margin-bottom: 2px;
+    .user-label {
+        width: 82%;
+        margin-bottom: 4px;
+        margin-top: 0.65rem;
+        color: #4d4646;
+        font-weight: variables.$font-bold;
+        text-transform: variables.$uppercase;
+        font-size: 0.65rem;
     }
 
-    form label:not(form label:first-child) {
-        margin-top: 10px;
+    .user-label:not(form label:first-child) {
+        margin-top: 1.5rem;
     }
 
-    form input {
+    .user-input {
         width: 80%;
-        padding: 4px;
-        background-color: variables.$background-light;
-        border: 1px solid variables.$text-muted;
-        color: #fff;
-    }
-
-    form input::placeholder {
-        color: variables.$text-main;
-    }
-
-    form input:focus {
-        color: #fff;
-        outline: none;
-    }
-
-    form button {
-        width: 75%;
-        margin-top: 15px;
-        background-color: variables.$primary;
-        color: variables.$text-main;
+        padding: 10px;
+        background-color: #f2f0ef;
         border: none;
-        padding: 6px;
+        color: variables.$text-main;
     }
 
-    .login-text {
-        text-align: center;
-        margin-top: 15px;
+    .user-input::placeholder {
+        font-size: variables.$text2;
+        color: variables.$text-muted;
+        text-transform: variables.$uppercase;
     }
 
-    p  + a {
-        display: block;
+    .user-input:focus {
+        outline: 1px solid variables.$primary;
+    }
+
+    .user-button {
+        width: 85%;
+        font-size: 0.90rem;
+        padding: 10px;
+        margin-top: 1.5rem;
+        text-transform: variables.$uppercase;
+        background-color: variables.$primary;
+        color: variables.$background-white;
+        border: none;
+    }
+
+    .user-text {
         text-align: center;
-        text-decoration: underline;
-        color: variables.$background-dark;
-        margin-top: 2px;
+        margin-top: 1.5rem;
+        font-size: variables.$text2;
+        font-weight: variables.$font-bold;
+        color: variables.$text-muted;
+        
+        a {
+            margin-left: 0.25rem;
+            text-align: center;
+            text-decoration: underline;
+            color: variables.$text-main
+        }
     }
 }

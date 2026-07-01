@@ -1,0 +1,35 @@
+@use "../utils/variables.scss" as variables;
+@use '../utils/mixins.scss' as mixins;
+
+.freeReturns-section {
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    background-color: variables.$background-white;
+    border-radius: variables.$border-radius2;
+    font-family: variables.$font-family;
+    box-sizing: variables.$border-box;
+
+    .freeReturns-title {
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+        font-size: variables.$text2;
+
+        .lucide-truck {
+            width: variables.$text;
+        }
+    }
+
+    .freeReturns-text {
+        width: 85%;
+        margin-left: 15px;
+        color: variables.$text-muted;
+        font-size: variables.$text2;
+
+        a {
+            color: variables.$text-muted;
+        }
+    }
+}
