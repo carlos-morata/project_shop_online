@@ -41,6 +41,7 @@
     font-size: variables.$text;
     text-align: center;
     margin: 1.5rem 0 0.4rem 0;
+
 }
 
 .userData-form {
@@ -49,6 +50,16 @@
     flex-direction: column;
     row-gap: 8px;
     margin: 0 auto;
+   
+    @include mixins.tablet {
+        align-items: center;
+    }
+
+    @include mixins.desktop {
+        flex-direction: row;
+        justify-content: center;
+        column-gap: 2.2rem;
+    }
 
     label {
         color: #4d4646;

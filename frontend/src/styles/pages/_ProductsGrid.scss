@@ -23,6 +23,12 @@
 .products-grid {
     width: 100%;
 
+    @include mixins.tablet {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
     .product-link {
         text-decoration: none;
         display: flex;

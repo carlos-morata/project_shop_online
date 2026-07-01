@@ -36,6 +36,7 @@ const SearchPage = () => {
 
     {results.length === 0 && <p>Cargando...</p>}
 
+    <div className="product-container">
     {results.map((item) => (
       <article key={item.product_id} className="product-article">
       <img src={item.url_image} alt={item.description} title={item.name} />
@@ -45,6 +46,7 @@ const SearchPage = () => {
       <button onClick={() => handleProductDetails(item)}>Ver Detalles</button>
       </article>
     ))}
+    </div>
   </section>;
 };
 
