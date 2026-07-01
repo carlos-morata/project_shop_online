@@ -14,7 +14,7 @@ const useCartQuantity = (setCart) => {
             // Obtener token
             const token = localStorage.getItem('token');
 
-            await api.put('/cart/update-quantity', {
+            await api.put('/api/cart/update-quantity', {
                 product_id: product_id,
                 size: size,
                 quantity: newQuantity

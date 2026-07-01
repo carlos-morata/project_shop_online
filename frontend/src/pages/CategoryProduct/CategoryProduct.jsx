@@ -17,7 +17,7 @@ const CategoryProduct = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await api.get(`/products?gender=${gender}&category=${category}&limit=1&page=${currentPage}`);
+        const response = await api.get(`/api/products?gender=${gender}&category=${category}&limit=1&page=${currentPage}`);
 
         setProducts(response.data.products || []);
 

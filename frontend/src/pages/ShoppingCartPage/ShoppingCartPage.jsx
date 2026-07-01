@@ -21,7 +21,7 @@ const ShoppingCartPage = () => {
           return;
         }
 
-        const response = await api.get(`/cart/`, 
+        const response = await api.get(`/api/cart/`, 
           { headers: { Authorization: `Bearer ${token}` } });
 
         setCart(response.data.data);

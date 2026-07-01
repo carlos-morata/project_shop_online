@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from '../../config/axiosInstance';
-import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 const SearchPage = () => {
+  const { query } = useParams();
   const [ results, setResults ] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
 
   const navigate = useNavigate();
 
-  const handleSubmit = async () => {
-    const response = await api.get(`/products/buscar?query=${searchValue}`)
-    setResults(response.data);
-  }
+  useEffect(() => {
+    const fetchSearchProducts = async () => {
+      const response = await api.get(`/buscar?query=${query}`);
 
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
-  }
+      setResults(response.data);
+    };
+    fetchSearchProducts();
+  }, [query]);
 
   const handleProductDetails = (item) => {
     const url = `/${item.gender}/${item.category}/${item.product_id}`;
@@ -26,17 +24,10 @@ const SearchPage = () => {
   }
 
   return <section className="search-container">
-    <div className="searchInput-container">
-      <input className="search-input" type="text" value={searchValue} onChange={handleChange} placeholder="Buscador de Productos" />
-      <button type="submit" className="search-btn" onClick={handleSubmit}>
-        <FontAwesomeIcon icon={faMagnifyingGlass} className="links" />
-      </button>
-    </div>
-    <h1>Resultados de Búsqueda Para {searchValue}</h1>
+    <h1>Resultados de Búsqueda {query}</h1>
 
     {results.length === 0 && <p>Cargando...</p>}
 
-    <div className="product-container">
     {results.map((item) => (
       <article key={item.product_id} className="product-article">
       <img src={item.url_image} alt={item.description} title={item.name} />
@@ -46,7 +37,6 @@ const SearchPage = () => {
       <button onClick={() => handleProductDetails(item)}>Ver Detalles</button>
       </article>
     ))}
-    </div>
   </section>;
 };
 
