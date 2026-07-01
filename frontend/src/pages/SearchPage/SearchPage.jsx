@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import api from '../../config/axiosInstance';
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const SearchPage = () => {
-  const { query } = useParams();
   const [ results, setResults ] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchSearchProducts = async () => {
-      const response = await api.get(`/buscar?query=${query}`);
+  const handleSubmit = async () => {
+    const response = await api.get(`/products/buscar?query=${searchValue}`)
+    setResults(response.data);
+  }
 
-      setResults(response.data);
-    };
-    fetchSearchProducts();
-  }, [query]);
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
+  }
 
   const handleProductDetails = (item) => {
     const url = `/${item.gender}/${item.category}/${item.product_id}`;
@@ -24,7 +26,11 @@ const SearchPage = () => {
   }
 
   return <section className="search-container">
-    <h1>Resultados de Búsqueda {query}</h1>
+    <input type="text" value={searchValue} onChange={handleChange} placeholder="Buscador de Productos" />
+    <button type="submit" className="search-btn" onClick={handleSubmit}>
+      <FontAwesomeIcon icon={faMagnifyingGlass} className="links" />
+    </button>
+    <h1>Resultados de Búsqueda {searchValue}</h1>
 
     {results.length === 0 && <p>Cargando...</p>}
 

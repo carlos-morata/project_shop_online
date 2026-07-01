@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // Importaciones Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUserPlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Nav from './Nav'
 import SearchProducts from '../../forms/SearchProducts'
 import ShoppingCart from './ShoppingCart'
@@ -29,7 +29,9 @@ const Header = () => {
       <h1>Luxe</h1>
     </Link>
     <div className="right-header">
-      <SearchProducts />
+      <Link to='/buscar'> 
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
+      </Link>
       <ShoppingCart />
       {isLogged ? (
     <Link to='/panel-usuario' className="links">
