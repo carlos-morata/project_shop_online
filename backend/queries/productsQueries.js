@@ -41,7 +41,7 @@ const queries = {
     // Buscar Productos
     searchProducts:
         ` SELECT * FROM products
-            WHERE name ILIKE '%' || $1 || '%';`,
+            WHERE unaccent(name) ILIKE '%' || unaccent($1) || '%';`,
 
     // Actualizar stock de productos
     updateProductStock:

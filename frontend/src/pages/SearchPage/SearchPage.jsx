@@ -30,7 +30,7 @@ const SearchPage = () => {
     <button type="submit" className="search-btn" onClick={handleSubmit}>
       <FontAwesomeIcon icon={faMagnifyingGlass} className="links" />
     </button>
-    <h1>Resultados de Búsqueda {searchValue}</h1>
+    <h1>Resultados de Búsqueda Para {searchValue}</h1>
 
     {results.length === 0 && <p>Cargando...</p>}
 
