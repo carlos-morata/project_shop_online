@@ -34,7 +34,7 @@ const RegisterUser = () => {
     };
 
     try {
-      const response = await api.post(`/users/signup`, {
+      const response = await api.post(`/api/users/signup`, {
         username: formValue.username,
         email: formValue.email,
         password: formValue.password
