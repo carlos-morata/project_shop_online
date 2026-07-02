@@ -10,7 +10,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     const fetchSearchProducts = async () => {
-      const response = await api.get(`/buscar?query=${query}`);
+      const response = await api.get(`/api/products/buscar?query=${query}`);
 
       setResults(response.data);
     };
