@@ -20,7 +20,7 @@ const useCart = () => {
 
         try {
             // Petición al endpoint
-            const response = await api.post('/cart/add-product', {
+            const response = await api.post('/api/cart/add-product', {
                 product_id: productId,
                 quantity: quantity,
                 size: sizes
