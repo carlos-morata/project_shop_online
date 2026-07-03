@@ -12,7 +12,7 @@ const DeleteProduct = ({ cart_id, handleDeleteProduct }) => {
           alert(`Inicia Sesión para borrar productos del carrito.`);
           return;
         }
-        await api.delete(`/cart/${cart_id}`, { headers: { Authorization: `Bearer ${token}` } });
+        await api.delete(`/api/cart/${cart_id}`, { headers: { Authorization: `Bearer ${token}` } });
         handleDeleteProduct(cart_id)
 
       } catch (error) {
