@@ -18,7 +18,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProductId = async () => {
       try {
-        const response = await api.get(`/products/${gender}/${category.toLowerCase()}/${product_id}`);
+        const response = await api.get(`/api/products/${gender}/${category.toLowerCase()}/${product_id}`);
         setProduct(response.data);
       } catch (error) {
         console.log(error);
