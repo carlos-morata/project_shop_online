@@ -11,7 +11,7 @@ const SearchPage = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
-    const response = await api.get(`/products/buscar?query=${searchValue}`)
+    const response = await api.get(`/api/products/buscar?query=${searchValue}`)
     setResults(response.data);
   }
 
