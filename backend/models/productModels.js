@@ -70,11 +70,23 @@ const updateProductStockModel = async (client, stock, product_id) => {
         return resultUpdateStock.rows[0];
 }
 
+// Editar productos
+const updateProductsModel = async(url_image, name, price, description, sizes, category, gender, stock, product_id) => {
+    try {
+        const resultUpdateProducts = await pool.query(queries.updateProducts, [ url_image, name, price, description, sizes, category, gender, stock, product_id ]);
+        return resultUpdateProducts.rows[0]
+    } catch (error) {
+        console.error('Error al editar el Producto: ', error.message);
+        throw new Error('Error al editar el Producto');
+    }
+}
+
 module.exports = {
     createProductModel,
     deleteProductModel,
     getProductsModel,
     getProductByIdModel,
     searchProductsModel,
-    updateProductStockModel
+    updateProductStockModel,
+    updateProductsModel
 }
