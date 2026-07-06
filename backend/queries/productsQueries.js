@@ -48,6 +48,20 @@ const queries = {
         ` UPDATE products
             SET stock = stock - $1
             WHERE product_id = $2`,
+    
+    // Editar Productos
+    updateProducts:
+        ` UPDATE products
+            SET
+                url_image = COALESCE($1, url_image),
+                name = COALESCE($2, name),
+                price = COALESCE($3, price),
+                description = COALESCE($4, description),
+                sizes = COALESCE($5, sizes),
+                category = COALESCE($6, category),
+                gender = COALESCE($7, gender),
+                stock = COALESCE($8, stock)
+            WHERE product_id = $9;`,
 }
 
 module.exports = queries;

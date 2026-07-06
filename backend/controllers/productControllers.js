@@ -106,10 +106,24 @@ const searchProducts = async (req, res) => {
     }
 }
 
+// Editar productos
+const editProducts = async (req, res) => {
+    try {
+        const { product_id } = req.params;
+        const { url_image, name, price, description, sizes, category, gender, stock } = req.body;
+        const resultEditProducts = await productModels.updateProductsModel(url_image, name, price, description, sizes, category, gender, stock, product_id);
+        res.status(200).json({ success: true, message: "Producto Editado Correctamente!"});
+    } catch(error) {
+        console.error(error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+}
+
 module.exports = {
     createProduct,
     deleteProduct,
     getProducts,
     getProductById,
     searchProducts,
+    editProducts,
 }
