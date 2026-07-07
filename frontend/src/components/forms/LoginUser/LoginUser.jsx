@@ -29,7 +29,7 @@ const LoginUser = () => {
     };
 
     try {
-      const response = await api.post(`/users/login`, {
+      const response = await api.post(`/api/users/login`, {
         email: formValue.email,
         password: formValue.password
       });
