@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 
-const useAuth = () => {
+const verifyRol = () => {
     try {
         const token = localStorage.getItem('token');
         const decoded = jwtDecode(token);
@@ -12,4 +12,4 @@ const useAuth = () => {
     }
 }
 
-export default useAuth;
+export default verifyRol;
