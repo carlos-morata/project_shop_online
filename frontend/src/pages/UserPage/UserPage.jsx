@@ -10,14 +10,11 @@ const UserPage = () => {
   useEffect(() => {
     const fetchPanelUser = async () => {
       try {
-        const token = localStorage.getItem('token');
-        if(!token) {
-          alert("Para ver tú Panel de Usuario, debes registrarte o iniciar sesión.");
+        if(!user) {
+          alert("Para ver el Panel de Usuario necesitas Iniciar sesión");
           return;
         }
-
-        const response = await api.get(`/api/users/`, 
-          { headers: { Authorization: `Bearer ${token}`} });
+        const response = await api.get(`/api/users/`);
 
           setUser(response.data.data);
           console.log(response.data.data)
