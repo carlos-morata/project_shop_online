@@ -11,14 +11,11 @@ const useCartQuantity = (setCart) => {
         if(newQuantity < 1) return;
         
         try {
-            // Obtener token
-            const token = localStorage.getItem('token');
-
             await api.put('/api/cart/update-quantity', {
                 product_id: product_id,
                 size: size,
                 quantity: newQuantity
-            }, { headers: { Authorization: `Bearer ${token}` } });
+            });
 
             // Actualizamos el estado al instante
             setCart(prevCart =>

@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from '../../config/axiosInstance';
+import useAuth from "../../hooks/useAuth";
 
 const OrdersPage = () => {
 
   const [ order, setOrder ] = useState([]);
+  const user = useAuth();
 
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const token = localStorage.getItem('token');
-
-        if(!token) {
+        if(!user) {
           alert("Para ver tus pedidos, necesistar iniciar sesión.");
           return;
         }
 
-        const response = await api.get(`/api/order/`, 
-          { headers: { Authorization: `Bearer ${token}` } });
+        const response = await api.get(`/api/order/`);
 
           setOrder(response.data.data);
       } catch (error) {

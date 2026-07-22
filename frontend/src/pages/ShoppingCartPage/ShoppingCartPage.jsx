@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import api from '../../config/axiosInstance';
+import useAuth from "../../hooks/useAuth";
 import useCartQuantity from "../../hooks/useCartQuantity";
 import CartSubtotal from "./CartSubtotal";
 import FreeReturns from "../../components/common/FreeReturns";
@@ -8,21 +9,19 @@ import DeleteProduct  from "./DeleteProduct";
 
 const ShoppingCartPage = () => {
   const [ cart, setCart ] = useState([]);
+  const user = useAuth();
 
   const { updateQuantity } = useCartQuantity(setCart);
 
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const token = localStorage.getItem('token');
-
-        if(!token) {
+        if(!user) {
           alert("Para ver tús productos en la cesta, necesitas iniciar sesion.");
           return;
         }
 
-        const response = await api.get(`/api/cart/`, 
-          { headers: { Authorization: `Bearer ${token}` } });
+        const response = await api.get(`/api/cart/`);
 
         setCart(response.data.data);
       } catch (error) {

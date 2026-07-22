@@ -6,13 +6,7 @@ const DeleteProduct = ({ cart_id, handleDeleteProduct }) => {
 
     const handleDelete = async () =>{
       try {
-
-        const token = localStorage.getItem('token');
-        if(!token){
-          alert(`Inicia Sesión para borrar productos del carrito.`);
-          return;
-        }
-        await api.delete(`/api/cart/${cart_id}`, { headers: { Authorization: `Bearer ${token}` } });
+        await api.delete(`/api/cart/${cart_id}`);
         handleDeleteProduct(cart_id)
 
       } catch (error) {
