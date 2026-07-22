@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import api from '../../config/axiosInstance';
+import useAuth from '../../hooks/useAuth';
 const VITE_API_URL = import.meta.env.VITE_API_URL;
 import ListUserPanel from "../../components/common/ListUserPanel"; 
 
 const UserPage = () => {
 
   const [ user, setUser ] = useState(null);
+  const users = useAuth();
 
   useEffect(() => {
     const fetchPanelUser = async () => {
       try {
-        if(!user) {
+        if(!users) {
           alert("Para ver el Panel de Usuario necesitas Iniciar sesión");
           return;
         }
