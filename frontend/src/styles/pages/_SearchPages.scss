@@ -6,11 +6,44 @@
     box-sizing: border-box;
     margin-top: 20px;
 
+    .searchInput-container {
+        display: flex;
+        justify-content: center;
+        column-gap: 10px;
+
+        button {
+            padding: 6px;
+            background-color: variables.$text-secondary;
+            color: variables.$background-white;
+            border: none;
+            border-radius: variables.$border-radius2;
+        }
+    }
+
+    .search-input {
+        width: 50%;
+        padding: 6px;
+        background-color: #f2f0ef;
+        border: none;
+        border-radius: variables.$border-radius2;
+    }
+
+    .search-input::placeholder {
+        color: variables.$text-secondary;
+    }
+
     h1 {
-        font-size: variables.$title2;
+        font-size: variables.$title3;
         text-align: center;
-        margin-top: 2px;
+        margin-top: 1.2rem;
         color: variables.$text-main;
+    }
+
+    .product-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
     }
 
     .product-article {
@@ -19,10 +52,23 @@
         align-items: center;
         margin-top: 25px;
         padding-bottom: 15px;
+
+        @include mixins.tablet {
+            width: 45%;
+            column-gap: 10px;
+        }
+
+        @include mixins.desktop {
+            width: 35%;
+        }
     }
     
     .product-article:not(.product-article:last-child) {
         border-bottom: 1px solid variables.$text-muted;
+
+        @include mixins.tablet {
+            border-bottom: none;
+        }
     }
 
     .product-article h2 {
@@ -30,7 +76,7 @@
         align-self: flex-start;
         font-size: variables.$title2;
         margin: 2px 5px;
-        color: variables.$primary;
+        color: variables.$background-dark;
     }
 
     img {
@@ -45,16 +91,16 @@
     }
 
     .description-text {
-    width: 90%;
-    padding: 5px;
-    margin: 0px 5px;
-    line-height: 20px;
-    text-align: center;
+        width: 90%;
+        padding: 5px;
+        margin: 0px 5px;
+        line-height: 20px;
+        text-align: center;
     }
 
     .description-text + button {
         width: 94%;
-        background-color: #000;
+        background-color: variables.$primary;
         color: #fff;
         border: none;
         padding: 5px;

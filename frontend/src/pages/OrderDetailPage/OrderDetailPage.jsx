@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from 'axios';
-const VITE_API_URL = import.meta.env.VITE_API_URL;
+import api from '../../config/axiosInstance';
+import useAuth from "../../hooks/useAuth";
 // Importaciones componentes de orders
 import Orderinfo from '../../components/orders/OrderInfo';
 import OrderItems from '../../components/orders/OrderItems';
@@ -11,18 +11,17 @@ import OrderTracking from '../../components/orders/OrderTracking';
 const OrderDetailPage = () => {
   const [ orderDetail, setOrderDetail ] = useState([]);
   const { order_id } = useParams();
+  const user = useAuth();
 
   useEffect(() => {
     const fetchOrderId = async () => {
       try {
-        const token = localStorage.getItem('token');
-        if(!token) {
+        if(!user) {
           alert("Para ver tus pedidos, necesistar iniciar sesión.");
           return;
         }
 
-        const response = await axios.get(`${VITE_API_URL}/order/${order_id}`,
-          { headers: { Authorization: `Bearer ${token}` } });
+        const response = await api.get(`/api/order/${order_id}`);
           setOrderDetail(response.data.data);
         } catch (error) {
           console.log(error);

@@ -1,13 +1,14 @@
-import axios from 'axios';
+import api from '../config/axiosInstance';
+import useAuth from '../hooks/useAuth';
 
 const useCart = () => {
 
+    const user = useAuth();
+
     const addToCart = async (productId, quantity, sizes) => {
-        // Obtener token
-        const token = localStorage.getItem('token');
 
         // Comprobamos si hay token
-        if(!token) {
+        if(!user) {
             alert("Para añadir productos a la cesta, necesitas iniciar sesión.");
             return;
         };
@@ -20,11 +21,11 @@ const useCart = () => {
 
         try {
             // Petición al endpoint
-            const response = await axios.post('http://localhost:3000/api/cart/add-product', {
+            const response = await api.post('/api/cart/add-product', {
                 product_id: productId,
                 quantity: quantity,
                 size: sizes
-            }, { headers: { Authorization: `Bearer ${token}` } });
+            });
 
             // Respuesta exitosa!
             alert("¡Producto añadido a la cesta con éxito!");

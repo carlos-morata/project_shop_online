@@ -24,6 +24,10 @@ app.use('/api/cart', cartRoutes);
 const orderRoutes = require('./routes/ordersRoutes');
 app.use('/api/order', orderRoutes);
 
+// Importar Rutas Admin
+const adminRoutes = require('./routes/adminRoutes');
+app.use('/api/admin', adminRoutes);
+
 app.listen(port, () => {
   console.log(`Servidor backend -> http://localhost:${port}`)
 })

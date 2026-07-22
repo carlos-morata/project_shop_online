@@ -47,7 +47,7 @@ function App() {
         <Route path='/pedidos' element={<OrdersPage />} /> {/* Pedidos */}
 
         {/* Rutas Dinámicas */}
-        <Route path='/buscar/:query' element={<SearchPage />} />
+        <Route path='/buscar' element={<SearchPage />} />
         <Route path='/:gender' element={<CategoryLanding />}> {/* Mujer, Hombre, etc */}
           <Route index element={<AllProducts />}/> {/* mujer/todos los productos */}
           <Route path=':category' element={<CategoryProduct />}/> {/* mujer/abrigos */}

@@ -81,5 +81,7 @@ App.jsx
         npx crcf src/pages/OrderDetailPage -j --notest -f
     -- orders/
         npx crcf src/components/orders/OrderTracking OrderItems OrderInfo OrderSummary -j --notest -f
+    -- admin/
+        npx crcf src/components/admin/UpdateProducts -j --notest -f
 
 -- styles/

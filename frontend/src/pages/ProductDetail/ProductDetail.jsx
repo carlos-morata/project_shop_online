@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from 'axios';
+import api from '../../config/axiosInstance';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import useCart from '../../hooks/useCart';
+import useAuth from "../../hooks/useAuth";
+import UpdateProducts from "../../components/admin/UpdateProducts";
 
 const ProductDetail = () => {
   // const navigate = useNavigate();
@@ -12,13 +14,15 @@ const ProductDetail = () => {
   const [ product, setProduct ] = useState(null);
 
   const [selectedSizes, setSelectedSizes] = useState("");
+  const [ showForm, setShowForm ] = useState(false);
 
   const { addToCart } = useCart();
+  const user = useAuth();
 
   useEffect(() => {
     const fetchProductId = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/products/${gender}/${category.toLowerCase()}/${product_id}`);
+        const response = await api.get(`/api/products/${gender}/${category.toLowerCase()}/${product_id}`);
         setProduct(response.data);
       } catch (error) {
         console.log(error);
@@ -53,9 +57,21 @@ const ProductDetail = () => {
         ))}
       </select> 
 
-      <button className="add-btn" onClick={handleBtnClick}>
+      <button type="button" className="add-btn" onClick={handleBtnClick}>
         Añadir a la Cesta <FontAwesomeIcon icon={faShoppingBag} />
       </button>
+
+      { showForm && <UpdateProducts
+                      product_id={product_id}
+                      url_image={product.url_image}
+                      name={product.name}
+                      price={product.price}
+                      sizes={product.sizes}
+                      description={product.description}
+                      category={product.category}
+                      gender={product.gender}
+                      stock={product.stock} /> }
+      { user?.rol === "admin" && <button type="button" onClick={() => setShowForm(!showForm)}>{ showForm ? 'Cerrar Edición' : 'Abrir Edición'}</button> }
 
       <section className="product-info-section">
       <details className="product-details">
